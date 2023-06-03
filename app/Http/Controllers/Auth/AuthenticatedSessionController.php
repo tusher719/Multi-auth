@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use PharIo\Manifest\Url;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,7 +30,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $url = '';
+        if ($request->user()->role === 'admin') {
+            $url = 'admin/dashboard';
+        } elseif ($request->user()->role === 'agent') {
+            $url = 'agent/dashboard';
+        } else {
+            $url = '/dashboard';
+        }
+
+        return redirect()->intended($url);
     }
 
     /**
