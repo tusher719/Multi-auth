@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    // Page View Controller
     public function AdminDashboard(){
         return view('admin.index');
     } // End Method
@@ -20,6 +21,12 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/admin/login');
+    } // End Method
+
+
+    // admin Login Controller
+    public function AdminLogin(Request $request){
+        Return view('admin.admin_login');
     } // End Method
 }
