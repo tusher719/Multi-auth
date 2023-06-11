@@ -55,26 +55,28 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Admin Change Password</h6>
-                        <form class="forms-sample" method="POST" action="{{ route('admin.profile.store') }}">
+                        <form class="forms-sample" method="POST" action="{{ route('admin.update.password') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-3">
-                                <label for="name" class="form-label">Old Password</label>
-                                <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" autocomplete="off">
+                                <label for="old_password" class="form-label">Old Password</label>
+                                <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" autocomplete="off" placeholder="Enter Old Password">
                                 @error('old_password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+
                             <div class="mb-3">
-                                <label for="name" class="form-label">New Password</label>
-                                <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" autocomplete="off">
+                                <label for="new_password" class="form-label">New Password</label>
+                                <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" autocomplete="off" placeholder="Enter New Password">
                                 @error('new_password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+
                             <div class="mb-3">
                                 <label for="name" class="form-label">Confirm New Password</label>
-                                <input type="password" name="new_password_confirm" class="form-control" id="new_password_confirm" autocomplete="off">
+                                <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" autocomplete="off" placeholder="Enter New Confirm Password">
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
