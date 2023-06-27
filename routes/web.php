@@ -48,11 +48,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Permissions All Route
     Route::controller(RoleController::class)->group(function(){
         Route::get('/all/permission', 'AllPermission')->name('all.permission');
-        Route::get('/add/type', 'AddType')->name('add.type');
-        Route::post('/store/type', 'StoreType')->name('store.type');
-        Route::get('/edit/type/{id}', 'EditType')->name('edit.edit');
-        Route::post('/update/type', 'UpdateType')->name('update.type');
-        Route::get('/delete/type/{id}', 'DeleteType')->name('delete.delete');
+        Route::get('/add/permission', 'AddPermission')->name('add.permission');
+        Route::post('/store/permission', 'StorePermission')->name('store.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
     });
 
 }); // End Group Admin Middleware

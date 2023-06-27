@@ -5,13 +5,13 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Permission</li>
+            <li class="breadcrumb-item active" aria-current="page">All Permission</li>
         </ol>
     </nav>
 
     <div class="row">
         <div class="col-md-12 mt-3 mb-3">
-            <a href="" class="btn btn-inverse-info">Add Permission</a>
+            <a href="{{ route('add.permission') }}" class="btn btn-inverse-info">Add Permission</a>
         </div>
     </div>
 
