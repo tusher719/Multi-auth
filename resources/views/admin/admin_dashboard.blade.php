@@ -137,5 +137,9 @@ License: For each use you must have a valid license purchased only from above li
     @endif
     </script>
 
+    <!-- Add Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend') }}/assets/js/code.js"></script>
+
 </body>
 </html>

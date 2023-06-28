@@ -36,4 +36,45 @@ class RoleController extends Controller
     } // End Method
 
 
+    // Edit Permission
+    public function editPermission($id){
+
+        $permission = Permission::findOrFail($id);
+        return view('backend.pages.permissions.edit_permissions', compact('permission'));
+
+    } // End Method
+
+
+    // Update Permissions controller
+    public function UpdatePermission(Request $request){
+        $per_id = $request->id;
+
+        Permission::FindOrFail($per_id)->update([
+            'name' => $request->name,
+            'group_name' => $request->group_name,
+        ]);
+
+        $notification = array(
+            'message' => 'Permission Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.permission')->with($notification);
+    } // End Method
+
+
+    // Delete Permission
+    public function deletePermission($id){
+
+        Permission::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Permission Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    }
+
 }
