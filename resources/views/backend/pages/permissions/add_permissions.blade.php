@@ -1,6 +1,8 @@
 @extends('admin.admin_dashboard')
 @section('admin')
 
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
 <div class="page-content">
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -13,7 +15,7 @@
 
 
     <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
+        <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Add Permission</h6>
@@ -57,4 +59,42 @@
 
 </div>
 
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                name: {
+                    required : true,
+                },
+                group_name: {
+                    required : true,
+                },
+
+            },
+            messages :{
+                name: {
+                    required : 'Please Enter Name!',
+                },
+                group_name: {
+                    required : 'Please Select Option!',
+                },
+
+
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+
+</script>
 @endsection
