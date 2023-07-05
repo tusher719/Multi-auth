@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Import Permission</h6>
 
-                    <form id="myForm" action="{{ route('store.permission') }}" method="POST" class="forms-sample">
+                    <form id="myForm" action="{{ route('import') }}" method="POST" enctype="multipart/form-data" class="forms-sample">
                         @csrf
 
                         <div class="form-group mb-3">
@@ -52,20 +52,14 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                name: {
-                    required : true,
-                },
-                group_name: {
+                import_file: {
                     required : true,
                 },
 
             },
             messages :{
-                name: {
-                    required : 'Please Enter Name!',
-                },
-                group_name: {
-                    required : 'Please Select Option!',
+                import_file: {
+                    required : 'Please Enter Xles file!',
                 },
 
 
