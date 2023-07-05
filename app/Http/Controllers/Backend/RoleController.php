@@ -179,4 +179,18 @@ class RoleController extends Controller
         return redirect()->back()->with($notification);
     } // End Method
 
+
+
+
+    // ================================||Add Role Permission all Method||================================
+    // All Roles Permission
+    public function AddRolesPermission() {
+
+        $roles = Role::all();
+        $permission = Permission::all();
+
+        return view('backend.pages.role_setup.add_roles_permission', compact('roles', 'permission'));
+    } // End Method
+
+
 }
