@@ -77,4 +77,13 @@ class RoleController extends Controller
 
     }
 
+
+
+
+    // ================================||Import & Export Route||================================
+
+    public function ImportPermission(){
+        return view('backend.pages.permissions.import_permissions');
+    } // End Method
+
 }

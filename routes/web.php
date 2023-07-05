@@ -53,6 +53,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
         Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+        // Import & Export Route
+        Route::get('/import/permission', 'ImportPermission')->name('import.permission');
     });
 
 }); // End Group Admin Middleware
