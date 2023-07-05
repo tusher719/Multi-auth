@@ -17,7 +17,7 @@
 <div class="row">
 
         <div class="col-md-6 grid-margin align-center">
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-inverse-danger">Download Xlsx</a>
+            <a href="{{ route('export') }}" class="btn btn-inverse-danger">Download Xlsx</a>
         </div>
 </div>
     <div class="row">

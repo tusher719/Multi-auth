@@ -56,6 +56,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         // Import & Export Route
         Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+        Route::get('/export', 'Export')->name('export');
     });
 
 }); // End Group Admin Middleware
