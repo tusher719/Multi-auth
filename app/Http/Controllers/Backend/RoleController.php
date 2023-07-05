@@ -140,5 +140,43 @@ class RoleController extends Controller
     } // End Method
 
 
+    // Edit Permission
+    public function EditRoles($id){
+        $roles= Role::findOrFail($id);
+        return view('backend.pages.roles.edit_roles', compact('roles'));
+
+    } // End Method
+
+
+    // Update Permissions controller
+    public function UpdateRoles(Request $request){
+        $role_id = $request->id;
+
+        Role::FindOrFail($role_id)->update([
+            'name' => $request->name,
+            'group_name' => $request->group_name,
+        ]);
+
+        $notification = array(
+            'message' => 'Role Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.roles')->with($notification);
+    } // End Method
+
+
+    // Delete Permission
+    public function DeleteRoles($id){
+
+        Role::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Role Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    } // End Method
 
 }

@@ -37,11 +37,11 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
-                                        <a href="{{ route('edit.permission',$item->id) }}" class="btn btn-inverse-warning">
+                                        <a href="{{ route('edit.roles',$item->id) }}" class="btn btn-inverse-warning">
                                             <i class="btn-icon-prepend" data-feather="edit"></i>
                                             Edit
                                         </a>
-                                        <a href="{{ route('delete.permission',$item->id) }}" class="btn btn-inverse-danger" id="delete">
+                                        <a href="{{ route('delete.roles',$item->id) }}" class="btn btn-inverse-danger" id="delete">
                                             <i data-feather="trash-2"></i>
                                             Delete
                                         </a>
