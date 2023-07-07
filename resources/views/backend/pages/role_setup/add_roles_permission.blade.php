@@ -2,6 +2,11 @@
 @section('admin')
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<style type="text/css">
+    .form-check-label {
+        text-transform: capitalize;
+    }
+</style>
 
 <div class="page-content">
     <nav class="page-breadcrumb">
@@ -33,8 +38,8 @@
                         </div>
 
                         <div class="form-check mb-2">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">
+                            <input type="checkbox" class="form-check-input" id="mainSelect">
+                            <label class="form-check-label" for="mainSelect">
                                 Permission All
                             </label>
                         </div>
@@ -115,6 +120,17 @@
                 $(element).removeClass('is-invalid');
             },
         });
+    });
+
+
+
+    // Select All Role
+    $('#mainSelect').click(function() {
+        if ($(this).is(':checked')) {
+            $('input[type=checkbox]').prop('checked',true);
+        } else {
+            $('input[type=checkbox]').prop('checked',false);
+        }
     });
 
 </script>
