@@ -39,14 +39,39 @@
                             </label>
                         </div>
 
+                        <hr>
+
+                        @foreach ($permission_group as $group)
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-check mb-2">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">
+                                        {{ $group->group_name }}
+                                    </label>
+                                </div>
+                            </div> <!-- ==========||End Col-md-3||========== -->
+
+                            <div class="col-md-9">
+                                <div class="form-check mb-2">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">
+                                        Permission All
+                                    </label>
+                                </div>
+                            </div>  <!-- ==========||End Col-md-9||========== -->
+                        </div> <!-- ==========||End Row||========== -->
+                        @endforeach
+
                         <button type="submit" class="btn btn-primary me-2">Save Changes</button>
 
                     </form>
 
                 </div>
-            </div>
+            </div><!-- ==========||End Card||========== -->
         </div>
-    </div>
+    </div> <!-- ==========||End Row||========== -->
 
 
 
