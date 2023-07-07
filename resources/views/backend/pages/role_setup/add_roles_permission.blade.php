@@ -54,12 +54,21 @@
                             </div> <!-- ==========||End Col-md-3||========== -->
 
                             <div class="col-md-9">
+
+                                @php
+                                $permissions = App\Models\User::getPermissionByGroupName($group->group_name)
+                                @endphp
+
+                                @foreach ($permissions as $permission)
                                 <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">
-                                        Permission All
+                                    <input type="checkbox" class="form-check-input" name="permission[]" id="permission{{ $permission->id }}" value="{{ $permission->id }}">
+                                    <label class="form-check-label" for="permission{{ $permission->id }}">
+                                        {{ $permission->name }}
                                     </label>
                                 </div>
+                                @endforeach
+                                <br>
+
                             </div>  <!-- ==========||End Col-md-9||========== -->
                         </div> <!-- ==========||End Row||========== -->
                         @endforeach
