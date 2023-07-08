@@ -48,7 +48,7 @@
                                             <i class="btn-icon-prepend" data-feather="edit"></i>
                                             Edit
                                         </a>
-                                        <a href="{{ route('delete.roles',$item->id) }}" class="btn btn-inverse-danger" id="delete">
+                                        <a href="{{ route('admin.delete.roles',$item->id) }}" class="btn btn-inverse-danger" id="delete">
                                             <i data-feather="trash-2"></i>
                                             Delete
                                         </a>

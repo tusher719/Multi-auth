@@ -48,9 +48,6 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
     <style>
-        .table-responsive{
-            overflow: hidden;
-        }
         div.dataTables_wrapper div.dataTables_filter {
             text-align: right;
         }
