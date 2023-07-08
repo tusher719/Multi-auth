@@ -40,43 +40,42 @@
                         <div class="form-check mb-2">
                             <input type="checkbox" class="form-check-input" id="mainSelect">
                             <label class="form-check-label" for="mainSelect">
-                                Permission All
+                                <h5 class="card-subtitle">Permission All</h5>
                             </label>
                         </div>
 
                         <hr>
 
-                        @foreach ($permission_group as $group)
                         <div class="row">
-
+                            @foreach ($permission_group as $group)
                             <div class="col-md-3">
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">
-                                        {{ $group->group_name }}
-                                    </label>
-                                </div>
-                            </div> <!-- ==========||End Col-md-3||========== -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            <h5 class="card-subtitle text-muted">{{ $group->group_name }}</h5>
+                                        </label>
+                                    </div> <!-- ==========||End Card Header||========== -->
 
-                            <div class="col-md-9">
+                                    <div class="card-body">
+                                        @php
+                                        $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
+                                        @endphp
 
-                                @php
-                                $permissions = App\Models\User::getPermissionByGroupName($group->group_name)
-                                @endphp
-
-                                @foreach ($permissions as $permission)
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input" name="permission[]" id="permission{{ $permission->id }}" value="{{ $permission->id }}">
-                                    <label class="form-check-label" for="permission{{ $permission->id }}">
-                                        {{ $permission->name }}
-                                    </label>
-                                </div>
-                                @endforeach
+                                        @foreach ($permissions as $permission)
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" name="permission[]" id="permission{{ $permission->id }}" value="{{ $permission->id }}">
+                                            <label class="form-check-label" for="permission{{ $permission->id }}">
+                                                {{ $permission->name }}
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                    </div> <!-- ==========||End Card Body||========== -->
+                                </div> <!-- ==========||End Card||========== -->
                                 <br>
-
-                            </div>  <!-- ==========||End Col-md-9||========== -->
+                            </div> <!-- ==========||End Col-md-3||========== -->
+                            @endforeach
                         </div> <!-- ==========||End Row||========== -->
-                        @endforeach
 
                         <button type="submit" class="btn btn-primary me-2">Save Changes</button>
 
