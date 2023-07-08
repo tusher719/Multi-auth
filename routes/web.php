@@ -73,6 +73,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         // Roles in Permissions
         Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
         Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
     });
 
 }); // End Group Admin Middleware
