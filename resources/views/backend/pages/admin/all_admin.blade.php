@@ -45,7 +45,12 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->role }}</td>
+                                    <td>
+                                        @foreach ($item->roles as $role)
+                                        <span class="badge badge-pill bg-danger">{{ $role->name }}</span>
+
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{ route('edit.permission',$item->id) }}" class="btn btn-inverse-warning">Edit</a>
                                         <a href="{{ route('delete.permission',$item->id) }}" class="btn btn-inverse-danger" id="delete">Delete</a>
