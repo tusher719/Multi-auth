@@ -212,5 +212,21 @@ class AdminController extends Controller
 
     }
 
+
+    // Delete Method
+    public function AdminAdmin($id){
+        $user = User::findOrFail($id);
+        if(!is_null($user)) {
+            $user->delete();
+        }
+
+        $notification = array(
+            'message' => 'New Admin User Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
 }
 
