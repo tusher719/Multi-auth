@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::nQ79mh9FW56pJwpy',
+            '_route' => 'generated::EaYN8so5ru4p0Cdi',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::lJpgxvVnqNu1cMkv',
+            '_route' => 'generated::SxtqBnHL3GvGvKTN',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::X3mZXl6hZxEN5dLO',
+            '_route' => 'generated::qr8BBskEMgEzdOHI',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::TNGuzHAjxyMrqSJK',
+            '_route' => 'generated::e64TzVgge3Jz5MXV',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::o6WClSE2drTdW46S',
+            '_route' => 'generated::vbSelGItHxaBcupa',
           ),
           1 => NULL,
           2 => 
@@ -1382,7 +1382,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::nQ79mh9FW56pJwpy' => 
+    'generated::EaYN8so5ru4p0Cdi' => 
     array (
       'methods' => 
       array (
@@ -1405,7 +1405,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::nQ79mh9FW56pJwpy',
+        'as' => 'generated::EaYN8so5ru4p0Cdi',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1421,7 +1421,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::lJpgxvVnqNu1cMkv' => 
+    'generated::SxtqBnHL3GvGvKTN' => 
     array (
       'methods' => 
       array (
@@ -1443,7 +1443,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::lJpgxvVnqNu1cMkv',
+        'as' => 'generated::SxtqBnHL3GvGvKTN',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1649,7 +1649,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::X3mZXl6hZxEN5dLO' => 
+    'generated::qr8BBskEMgEzdOHI' => 
     array (
       'methods' => 
       array (
@@ -1670,7 +1670,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::X3mZXl6hZxEN5dLO',
+        'as' => 'generated::qr8BBskEMgEzdOHI',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1724,7 +1724,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::TNGuzHAjxyMrqSJK' => 
+    'generated::e64TzVgge3Jz5MXV' => 
     array (
       'methods' => 
       array (
@@ -1745,7 +1745,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::TNGuzHAjxyMrqSJK',
+        'as' => 'generated::e64TzVgge3Jz5MXV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2065,7 +2065,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::o6WClSE2drTdW46S' => 
+    'generated::vbSelGItHxaBcupa' => 
     array (
       'methods' => 
       array (
@@ -2086,7 +2086,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::o6WClSE2drTdW46S',
+        'as' => 'generated::vbSelGItHxaBcupa',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2190,7 +2190,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminDashboard',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminDashboard',
@@ -2229,7 +2229,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminLogout',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminLogout',
@@ -2268,7 +2268,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminProfile',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminProfile',
@@ -2306,7 +2306,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminProfileStore',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminProfileStore',
@@ -2345,7 +2345,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminChangePassword',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminChangePassword',
@@ -2383,7 +2383,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminUpdatePassword',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminUpdatePassword',
@@ -2422,7 +2422,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AllPermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AllPermission',
@@ -2461,7 +2461,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AddPermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AddPermission',
@@ -2499,7 +2499,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@StorePermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@StorePermission',
@@ -2538,7 +2538,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@EditPermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@EditPermission',
@@ -2576,7 +2576,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@UpdatePermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@UpdatePermission',
@@ -2615,7 +2615,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@DeletePermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@DeletePermission',
@@ -2654,7 +2654,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@ImportPermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@ImportPermission',
@@ -2693,7 +2693,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@Export',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@Export',
@@ -2731,7 +2731,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@Import',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@Import',
@@ -2770,7 +2770,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AllRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AllRoles',
@@ -2809,7 +2809,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AddRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AddRoles',
@@ -2847,7 +2847,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@StoreRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@StoreRoles',
@@ -2886,7 +2886,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@EditRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@EditRoles',
@@ -2924,7 +2924,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@UpdateRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@UpdateRoles',
@@ -2963,7 +2963,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@DeleteRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@DeleteRoles',
@@ -3002,7 +3002,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AddRolesPermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AddRolesPermission',
@@ -3040,7 +3040,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@RolePermissionStore',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@RolePermissionStore',
@@ -3079,7 +3079,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AllRolesPermission',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AllRolesPermission',
@@ -3118,7 +3118,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AdminEditRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AdminEditRoles',
@@ -3156,7 +3156,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AdminRolesUpdate',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AdminRolesUpdate',
@@ -3195,7 +3195,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Backend\\RoleController@AdminDeleteRoles',
         'controller' => 'App\\Http\\Controllers\\Backend\\RoleController@AdminDeleteRoles',
@@ -3234,7 +3234,8 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
+          3 => 'permission:admin.all',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AllAdmin',
         'controller' => 'App\\Http\\Controllers\\AdminController@AllAdmin',
@@ -3273,7 +3274,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AddAdmin',
         'controller' => 'App\\Http\\Controllers\\AdminController@AddAdmin',
@@ -3311,7 +3312,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@StoreAdmin',
         'controller' => 'App\\Http\\Controllers\\AdminController@StoreAdmin',
@@ -3350,7 +3351,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@EditAdmin',
         'controller' => 'App\\Http\\Controllers\\AdminController@EditAdmin',
@@ -3388,7 +3389,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@UpdateAdmin',
         'controller' => 'App\\Http\\Controllers\\AdminController@UpdateAdmin',
@@ -3427,7 +3428,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:admin',
+          2 => 'roles:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\AdminController@AdminAdmin',
         'controller' => 'App\\Http\\Controllers\\AdminController@AdminAdmin',
@@ -3466,7 +3467,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
           1 => 'auth',
-          2 => 'role:agent',
+          2 => 'roles:agent',
         ),
         'uses' => 'App\\Http\\Controllers\\AgentController@AgentDashboard',
         'controller' => 'App\\Http\\Controllers\\AgentController@AgentDashboard',

@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Admin Group Middleware
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     // Admin Login
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
@@ -82,19 +82,19 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // Admin User All Route
     Route::controller(AdminController::class)->group(function(){
-        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
-        Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin')->middleware('permission:admin.all');
+        Route::get('/add/admin', 'AddAdmin')->name('add.admin')->middleware('permission:admin.add');
         Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
-        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
+        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin')->middleware('permission:admin.edit');
         Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
-        Route::get('/delete/admin/{id}', 'AdminAdmin')->name('delete.admin');
+        Route::get('/delete/admin/{id}', 'AdminAdmin')->name('delete.admin')->middleware('permission:admin.delete');
     });
 
 }); // End Group Admin Middleware
 
 
 // Agent Group Middleware
-Route::middleware(['auth', 'role:agent'])->group(function () {
+Route::middleware(['auth', 'roles:agent'])->group(function () {
     Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
 }); // End Group Agent Middleware
 

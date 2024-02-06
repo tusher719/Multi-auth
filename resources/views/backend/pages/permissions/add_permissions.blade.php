@@ -38,7 +38,7 @@
                                 <option value="property">Property</option>
                                 <option value="history">Package History</option>
                                 <option value="message">Property Message</option>
-                                <option value="testimonials">Testimonials</option>
+                                <option value="admin">Admin User</option>
                                 <option value="category">Blog Category</option>
                                 <option value="post">Blog Post</option>
                                 <option value="setting">Site Setting</option>

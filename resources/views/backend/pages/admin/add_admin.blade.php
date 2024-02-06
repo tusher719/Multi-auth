@@ -7,10 +7,17 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('all.roles') }}">All Roles</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Roles</li>
+            <li class="breadcrumb-item">Manage Admin User</li>
+            <li class="breadcrumb-item"><a href="{{ route('all.admin') }}">All Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Admin</li>
         </ol>
     </nav>
+
+    <div class="row">
+        <div class="col-md-12 mt-3 mb-3">
+            <a href="{{ route('all.admin') }}" class="btn btn-inverse-info">All Admin</a>
+        </div>
+    </div>
 
 
 
@@ -18,7 +25,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Add Roles</h6>
+                    <h6 class="card-title">Add Admin</h6>
 
                     <form id="myForm" action="{{ route('store.admin') }}" method="POST" class="forms-sample">
                         @csrf
@@ -94,7 +101,7 @@
                 usernames: {
                     required : true,
                 },
-                name: {
+                names: {
                     required : true,
                 },
                 email: {

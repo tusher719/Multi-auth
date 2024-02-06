@@ -5,14 +5,17 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All Permission</li>
+            <li class="breadcrumb-item">Manage Admin User</li>
+            <li class="breadcrumb-item active" aria-current="page">All Admin</li>
         </ol>
     </nav>
 
     <div class="row">
-        <div class="col-md-12 mt-3 mb-3">
-            <a href="{{ route('add.admin') }}" class="btn btn-inverse-info">Add Admin</a>
-        </div>
+        @if(Auth::user()->can('admin.add'))
+            <div class="col-md-12 mt-3 mb-3">
+                <a href="{{ route('add.admin') }}" class="btn btn-inverse-info"> Add Admin </a>
+            </div>
+        @endif
     </div>
 
 
@@ -52,8 +55,12 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{ route('edit.admin',$item->id) }}" class="btn btn-inverse-warning">Edit</a>
-                                        <a href="{{ route('delete.admin',$item->id) }}" class="btn btn-inverse-danger" id="delete">Delete</a>
+                                        @if(Auth::user()->can('admin.edit'))
+                                            <a href="{{ route('edit.admin',$item->id) }}" class="btn btn-inverse-warning">Edit</a>
+                                        @endif
+                                        @if(Auth::user()->can('admin.delete'))
+                                                <a href="{{ route('delete.admin',$item->id) }}" class="btn btn-inverse-danger" id="delete">Delete</a>
+                                            @endif
                                     </td>
                                 </tr>
                                 @endforeach
