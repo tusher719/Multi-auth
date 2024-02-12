@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\Creative_Park\CpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,18 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin')->middleware('permission:admin.edit');
         Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
         Route::get('/delete/admin/{id}', 'AdminAdmin')->name('delete.admin')->middleware('permission:admin.delete');
+    });
+
+    // Creative Park All Route
+    Route::controller(CpController::class)->group(function(){
+        Route::get('/creative-park/all/students', 'AllMembers')->name('all.cp.members')->middleware('permission:admin.all');;
+        Route::get('/creative-park/add/students', 'AddMember')->name('add.cp.member')->middleware('permission:admin.add');
+        Route::post('/creative-park/store/students', 'StoreMembers')->name('cp.store.members');
+        Route::get('/creative-park/view/students/{id}', 'ViewDetails')->name('cp.view.details');
+        Route::get('/creative-park/edit/students/{id}', 'EditRoles')->name('cp.edit.students');
+        Route::post('/creative-park/update/students', 'UpdateRoles')->name('cp.update.students');
+        Route::get('/creative-park/delete/students/{id}', 'DeleteRoles')->name('cp,delete.students');
+
     });
 
 }); // End Group Admin Middleware

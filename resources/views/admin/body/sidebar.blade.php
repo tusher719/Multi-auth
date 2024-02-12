@@ -140,6 +140,31 @@
                 </div>
             </li>
 
+
+            <li class="nav-item nav-category">Creative Park</li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false" aria-controls="RolePermission">
+                    <i class="link-icon" data-feather="anchor"></i>
+                    <span class="link-title">Student Manage</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="cp">
+                    <ul class="nav sub-menu">
+                        @if(Auth::user()->can('admin.all'))
+                            <li class="nav-item">
+                                <a href="{{ route('all.cp.members') }}" class="nav-link">All Students</a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->can('admin.add'))
+                            <li class="nav-item">
+                                <a href="{{ route('add.cp.member') }}" class="nav-link">Add Student</a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+
             <li class="nav-item nav-category">Docs</li>
             <li class="nav-item">
                 <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
