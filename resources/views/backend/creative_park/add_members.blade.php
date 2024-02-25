@@ -7,17 +7,27 @@
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item">Manage Admin User</li>
-                <li class="breadcrumb-item"><a href="{{ route('all.admin') }}">All Admin</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('all.cp.members') }}">Creative Park</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Add Student</li>
             </ol>
         </nav>
 
         <div class="row">
-            <div class="col-md-12 mt-3 mb-3">
+            <div class="col-md-2 mt-3 mb-3">
                 <a href="{{ route('all.cp.members') }}" class="btn btn-inverse-info">
-                    <i class="btn-icon-prepend" data-feather="users"></i>
-                    All Student
+                    <i class="btn-icon-prepend mx-1" data-feather="users" width="18" height="18"></i>
+                    All Students
+                </a>
+            </div>
+            <div class="col-md-10 mt-3 mb-3 float-end">
+                <a href="{{ route('import.students') }}" class="btn btn-inverse-success mx-2">
+                    <i class="btn-icon-prepend" data-feather="arrow-up" width="18" height="18"></i>
+                    Import
+                </a>
+
+                <a href="{{ route('export.student') }}" class="btn btn-inverse-danger">
+                    <i class="btn-icon-prepend" data-feather="arrow-down" width="18" height="18"></i>
+                    Export
                 </a>
             </div>
         </div>
@@ -58,6 +68,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
+                                        <label class="form-label">Phone 2</label>
+                                        <input type="text" name="phone_2" class="form-control" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Batch</label>
                                         <input type="text" name="batch" class="form-control" placeholder="Batch">
                                     </div>
@@ -92,15 +108,11 @@
                                     </div>
                                 </div>
 
-
-
-
-
                                 <div class="col-md-4">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Blood Group</label>
                                         <select name="blood" class="form-select">
-                                            <option selected="" disabled="">Select Blod</option>
+                                            <option selected="" disabled="">Select Blood</option>
                                             <option value="A+">A+</option>
                                             <option value="A-">A-</option>
                                             <option value="B+">B+</option>
@@ -114,9 +126,17 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                            <div class="form-check mb-4 my-3">
+                                <input type="checkbox" class="form-check-input" name="status" id="checkChecked" value="active">
+                                <label class="form-check-label" for="checkChecked">
+                                    Active
+                                </label>
+                            </div>
 
-
+                            <button type="submit" class="btn btn-primary me-3">Add Student</button>
+                            <a href="{{ route('all.cp.members') }}" class="btn btn-inverse-secondary">
+                                Back
+                            </a>
 
                         </div>
                     </div>

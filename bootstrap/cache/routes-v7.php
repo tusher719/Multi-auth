@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ow2HLFnkgkz00EiS',
+            '_route' => 'generated::jvuMGy2iq0XDFWh3',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::poDpSyJYtzo6XV2O',
+            '_route' => 'generated::LPjEHnngwxBIVX3d',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::JUZyuXAcDVhYUAT0',
+            '_route' => 'generated::BifIH5lPXjDiDSe8',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::g9jpxdk089ySSAaq',
+            '_route' => 'generated::1gVDJAxjgXqLBhEQ',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::RpEijVkYeWeUXtuq',
+            '_route' => 'generated::80vWRnHZgrsPEmJz',
           ),
           1 => NULL,
           2 => 
@@ -958,13 +958,53 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/creative-park/update/students' => 
+      '/creative-park/import/cp_students' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'cp.update.students',
+            '_route' => 'import.students',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/creative-park/export/student' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'export.student',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/creative-park/import/student' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'import.student',
           ),
           1 => NULL,
           2 => 
@@ -1020,7 +1060,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|edit/students/([^/]++)(*:439)|delete/students/([^/]++)(*:471)))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1322,7 +1362,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      439 => 
+      440 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'cp.clone.students',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      470 => 
       array (
         0 => 
         array (
@@ -1345,13 +1408,81 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      471 => 
+      502 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'cp,delete.students',
+            '_route' => 'cp.update.students',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      534 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'cp.delete.students',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      573 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'cp.inactive.students',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      596 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'cp.active.students',
           ),
           1 => 
           array (
@@ -1529,7 +1660,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ow2HLFnkgkz00EiS' => 
+    'generated::jvuMGy2iq0XDFWh3' => 
     array (
       'methods' => 
       array (
@@ -1552,7 +1683,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ow2HLFnkgkz00EiS',
+        'as' => 'generated::jvuMGy2iq0XDFWh3',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1568,7 +1699,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::poDpSyJYtzo6XV2O' => 
+    'generated::LPjEHnngwxBIVX3d' => 
     array (
       'methods' => 
       array (
@@ -1590,7 +1721,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::poDpSyJYtzo6XV2O',
+        'as' => 'generated::LPjEHnngwxBIVX3d',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1796,7 +1927,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::JUZyuXAcDVhYUAT0' => 
+    'generated::BifIH5lPXjDiDSe8' => 
     array (
       'methods' => 
       array (
@@ -1817,7 +1948,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::JUZyuXAcDVhYUAT0',
+        'as' => 'generated::BifIH5lPXjDiDSe8',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1871,7 +2002,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::g9jpxdk089ySSAaq' => 
+    'generated::1gVDJAxjgXqLBhEQ' => 
     array (
       'methods' => 
       array (
@@ -1892,7 +2023,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::g9jpxdk089ySSAaq',
+        'as' => 'generated::1gVDJAxjgXqLBhEQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2212,7 +2343,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::RpEijVkYeWeUXtuq' => 
+    'generated::80vWRnHZgrsPEmJz' => 
     array (
       'methods' => 
       array (
@@ -2233,7 +2364,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::RpEijVkYeWeUXtuq',
+        'as' => 'generated::80vWRnHZgrsPEmJz',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3760,6 +3891,45 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'cp.clone.students' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'creative-park/clone/students/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@CloneMembers',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@CloneMembers',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'cp.clone.students',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'cp.edit.students' => 
     array (
       'methods' => 
@@ -3776,8 +3946,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'roles:admin',
         ),
-        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@EditRoles',
-        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@EditRoles',
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@EditMembers',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@EditMembers',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -3805,7 +3975,7 @@ app('router')->setCompiledRoutes(
       array (
         0 => 'POST',
       ),
-      'uri' => 'creative-park/update/students',
+      'uri' => 'creative-park/update/students/{id}',
       'action' => 
       array (
         'middleware' => 
@@ -3814,8 +3984,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'roles:admin',
         ),
-        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@UpdateRoles',
-        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@UpdateRoles',
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@UpdateMembers',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@UpdateMembers',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -3837,7 +4007,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'cp,delete.students' => 
+    'cp.delete.students' => 
     array (
       'methods' => 
       array (
@@ -3853,14 +4023,208 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'roles:admin',
         ),
-        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@DeleteRoles',
-        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@DeleteRoles',
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@DeleteStudent',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@DeleteStudent',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'cp,delete.students',
+        'as' => 'cp.delete.students',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'cp.inactive.students' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'students/inactive/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@InactiveStudent',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@InactiveStudent',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'cp.inactive.students',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'cp.active.students' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'students/active/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ActiveStudent',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ActiveStudent',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'cp.active.students',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'import.students' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'creative-park/import/cp_students',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ImportStudents',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ImportStudents',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'import.students',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'export.student' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'creative-park/export/student',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ExportStudent',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ExportStudent',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'export.student',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'import.student' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'creative-park/import/student',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ImportStudent',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@ImportStudent',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'import.student',
       ),
       'fallback' => false,
       'defaults' => 

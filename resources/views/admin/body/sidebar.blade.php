@@ -141,12 +141,12 @@
             </li>
 
 
-            <li class="nav-item nav-category">Creative Park</li>
+            <li class="nav-item nav-category">Student Manage</li>
 
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false" aria-controls="RolePermission">
                     <i class="link-icon" data-feather="anchor"></i>
-                    <span class="link-title">Student Manage</span>
+                    <span class="link-title">Creative Park</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse" id="cp">

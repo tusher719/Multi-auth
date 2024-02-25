@@ -97,9 +97,17 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/add/students', 'AddMember')->name('add.cp.member')->middleware('permission:admin.add');
         Route::post('/creative-park/store/students', 'StoreMembers')->name('cp.store.members');
         Route::get('/creative-park/view/students/{id}', 'ViewDetails')->name('cp.view.details');
-        Route::get('/creative-park/edit/students/{id}', 'EditRoles')->name('cp.edit.students');
-        Route::post('/creative-park/update/students', 'UpdateRoles')->name('cp.update.students');
-        Route::get('/creative-park/delete/students/{id}', 'DeleteRoles')->name('cp,delete.students');
+        Route::get('/creative-park/clone/students/{id}', 'CloneMembers')->name('cp.clone.students');
+        Route::get('/creative-park/edit/students/{id}', 'EditMembers')->name('cp.edit.students');
+        Route::post('/creative-park/update/students/{id}', 'UpdateMembers')->name('cp.update.students');
+        Route::get('/creative-park/delete/students/{id}', 'DeleteStudent')->name('cp.delete.students');
+        Route::get('/students/inactive/{id}', 'InactiveStudent')->name('cp.inactive.students');
+        Route::get('/students/active/{id}', 'ActiveStudent')->name('cp.active.students');
+
+        // Import & Export Route
+        Route::get('/creative-park/import/cp_students', 'ImportStudents')->name('import.students');
+        Route::get('/creative-park/export/student', 'ExportStudent')->name('export.student');
+        Route::post('/creative-park/import/student', 'ImportStudent')->name('import.student');
 
     });
 

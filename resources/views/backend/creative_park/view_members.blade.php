@@ -7,8 +7,8 @@
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item">Student Manage</li>
-                <li class="breadcrumb-item"><a href="{{ route('all.admin') }}">All Admin</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('all.cp.members') }}">Creative Park</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('all.cp.members') }}">All Students</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Student Info</li>
             </ol>
         </nav>
@@ -101,7 +101,9 @@
                                                 <h4>Date of birth :</h4>
                                             </div>
                                             <div class="col-md-10 px-1 border-bottom border-info">
-                                                <h5>{{ $details->date }}</h5>
+                                                <h5>
+                                                    {{ Carbon\Carbon::parse($details->date)->format('d-M-Y') }}
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
