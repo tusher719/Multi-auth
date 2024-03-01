@@ -35,13 +35,13 @@
                                     <div class="px-2">
                                         @if($details->status == 'active')
                                             <span class="badge border border-success text-success">
-                                                <i data-feather="check"></i>
-                                                Active
+                                                <i data-feather="user-check" class="icon-sm" width="24" height="24" ></i>
+                                                    Active
                                             </span></td>
                                         @elseif($details->status == 'inactive')
                                             <span class="badge border border-danger text-danger">
-                                                <i data-feather="lock"></i>
-                                                inactive
+                                                <i data-feather="user-x" class="icon-sm" width="24" height="24" ></i>
+                                                Banned
                                             </span></td>
                                         @endif
                                     </div>
@@ -87,7 +87,7 @@
                                             <div class="col-md-4 px-1 border-bottom border-info">
                                                 <h5>{{ $details->phone }}</h5>
                                             </div>
-                                            <div class="col-md-2 px-4">
+                                            <div class="col-md-2 px-5">
                                                 <h4>Phone 2 :</h4>
                                             </div>
                                             <div class="col-md-4 px-1 border-bottom border-info">
@@ -132,7 +132,7 @@
                                                 <h5>{{ $details->batch }}th</h5>
                                             </div>
 
-                                            <div class="col-md-2 px-4">
+                                            <div class="col-md-2 px-5">
                                                 <h4>Section :</h4>
                                             </div>
                                             <div class="col-md-4 px-1 border-bottom border-info">

@@ -45,9 +45,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title d-flex">
-                            <div>Creative Park All Members <span class="badge border border-primary text-secondary mx-1">{{ $total }}</span></div>
-                            <div class="mx-4">Active Students : <span class="badge border border-success text-success mx-1">{{ $activeUser }}</span></div>
-                            <div>InActive Students : <span class="badge border border-danger text-danger mx-1">{{ $inactiveUser }}</span></div>
+                            <div>Creative Park All Members <span class="badge bg-primary mx-1">{{ $total }}</span></div>
+                            <div class="mx-4">Active <span class="badge bg-success mx-1">{{ $activeUser }}</span></div>
+                            <div>Banned <span class="badge bg-danger mx-1">{{ $inactiveUser }}</span></div>
                         </h6>
 
 {{--                        <div class="table-responsive">--}}
@@ -55,7 +55,12 @@
                             <table id="dataTableExample" class="table">
                                 <thead>
                                 <tr>
-                                    <th>Sl</th>
+                                    <th>
+                                        <button type="button" class="btn btn-outline-primary btn-sm checkbox-toggle">
+                                            <i class="far fa-square"></i>
+                                        </button>
+                                        Sl
+                                    </th>
                                     <th>Image</th>
                                     <th>Student Id</th>
                                     <th>Student Name</th>
@@ -86,12 +91,12 @@
                                             @if($item->status == 'active')
                                                 <span class="badge border border-success text-success">
                                                     <i data-feather="user-check" class="icon-sm" width="24" height="24" ></i>
-                                                    {{$item->status}}
+                                                    Active
                                                 </span></td>
                                             @else
                                             <span class="badge border border-danger text-danger">
                                                 <i data-feather="user-x" class="icon-sm" width="24" height="24" ></i>
-                                                {{$item->status}}
+                                                Banned
                                             </span>
                                             @endif
                                         <td>
@@ -113,25 +118,25 @@
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         @if(Auth::user()->can('admin.edit'))
-                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.view.details',$item->id) }}">
+                                                            <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('cp.view.details',$item->id) }}">
                                                                 <i data-feather="eye" class="icon-sm" width="24" height="24" ></i>
                                                                 <span class="mx-3">View Profile</span>
                                                             </a>
                                                         @endif
                                                             @if(Auth::user()->can('admin.delete'))
-                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.clone.students',$item->id) }}">
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('cp.clone.students',$item->id) }}">
                                                                     <i data-feather="copy" class="icon-sm" width="24" height="24" ></i>
                                                                     <span class="mx-3">Clone Data</span>
                                                                 </a>
                                                             @endif
                                                             @if(Auth::user()->can('admin.edit'))
-                                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.edit.students',$item->id) }}">
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('cp.edit.students',$item->id) }}">
                                                                     <i data-feather="edit-2" class="icon-sm" width="24" height="24" ></i>
                                                                     <span class="mx-3">Edit Profile</span>
                                                                 </a>
                                                             @endif
                                                             @if(Auth::user()->can('admin.delete'))
-                                                                <a class="dropdown-item d-flex align-items-center" id="delete" href="{{ route('cp.delete.students',$item->id) }}">
+                                                                <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" id="delete" href="{{ route('cp.delete.students',$item->id) }}">
                                                                     <i data-feather="trash-2" class="icon-sm" width="24" height="24"></i>
                                                                     <span class="mx-3">Delete</span>
                                                                 </a>
@@ -141,12 +146,12 @@
                                                                 @if($item->status == 'active')
                                                                     <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.inactive.students',$item->id) }}">
                                                                         <i data-feather="user-x" class="icon-sm text-danger" width="24" height="24" ></i>
-                                                                        <span class="mx-3 text-danger">Inactive {{ $item->id }}</span>
+                                                                        <span class="mx-3 text-danger">Banned</span>
                                                                     </a>
                                                                 @else
                                                                     <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.active.students',$item->id) }}">
                                                                         <i data-feather="user-check" class="icon-sm text-success" width="24" height="24" ></i>
-                                                                        <span class="mx-3 text-success">Active {{ $item->id }}</span>
+                                                                        <span class="mx-3 text-success">Active</span>
                                                                     </a>
                                                                 @endif
                                                             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\Creative_Park\CpController;
+use App\Http\Controllers\Backend\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +94,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
     // Creative Park All Route
     Route::controller(CpController::class)->group(function(){
-        Route::get('/creative-park/all/students', 'AllMembers')->name('all.cp.members')->middleware('permission:admin.all');;
+        Route::get('/creative-park/all/students', 'AllMembers')->name('all.cp.members')->middleware('permission:admin.all');
         Route::get('/creative-park/add/students', 'AddMember')->name('add.cp.member')->middleware('permission:admin.add');
         Route::post('/creative-park/store/students', 'StoreMembers')->name('cp.store.members');
         Route::get('/creative-park/view/students/{id}', 'ViewDetails')->name('cp.view.details');
@@ -101,6 +102,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/edit/students/{id}', 'EditMembers')->name('cp.edit.students');
         Route::post('/creative-park/update/students/{id}', 'UpdateMembers')->name('cp.update.students');
         Route::get('/creative-park/delete/students/{id}', 'DeleteStudent')->name('cp.delete.students');
+        Route::post('/creative-park/mark/delete', 'MarkDelete')->name('Mark.delete');
         Route::get('/students/inactive/{id}', 'InactiveStudent')->name('cp.inactive.students');
         Route::get('/students/active/{id}', 'ActiveStudent')->name('cp.active.students');
 
@@ -109,6 +111,15 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/export/student', 'ExportStudent')->name('export.student');
         Route::post('/creative-park/import/student', 'ImportStudent')->name('import.student');
 
+    });
+
+    // Tag All Route
+    Route::controller(TagController::class)->group(function(){
+        Route::get('/tag/all', 'AllTag')->name('all.tag')->middleware('permission:admin.all');
+        Route::post('/tag/store', 'StoreTag')->name('store.tag');
+        Route::get('/tag/edit/{id}', 'EditTag')->name('edit.tag');
+        Route::post('/tag/update/{id}', 'UpdateTag')->name('update.tag');
+        Route::get('/tag/delete/{id}', 'DeleteTag')->name('delete.tag');
     });
 
 }); // End Group Admin Middleware

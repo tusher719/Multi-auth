@@ -2,6 +2,7 @@
 
 namespace App\Models\CP;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,5 +31,9 @@ class Creative_park extends Model
 
     public function user(){
         return $this->belongsTo(User::class,'auth_id','id');
+    }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class)->as('tags');
     }
 }

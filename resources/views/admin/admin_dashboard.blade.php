@@ -30,6 +30,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- endinject -->
 
 	<!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendors/select2/select2.min.css">
 	<link rel="stylesheet" href="{{ asset('backend') }}/assets/vendors/flatpickr/flatpickr.min.css">
 	<!-- End plugin css for this page -->
 
@@ -95,6 +96,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('backend') }}/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
     <script src="{{ asset('backend') }}/assets/js/data-table.js"></script>
     <script src="{{ asset('backend') }}/assets/js/validate.min.js"></script>
+    <script src="{{ asset('backend') }}/assets/vendors/select2/select2.min.js"></script>
 	<!-- Plugin js for this page -->
     <script src="{{ asset('backend') }}/assets/vendors/flatpickr/flatpickr.min.js"></script>
     <script src="{{ asset('backend') }}/assets/vendors/apexcharts/apexcharts.min.js"></script>

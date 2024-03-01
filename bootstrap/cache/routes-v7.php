@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::jvuMGy2iq0XDFWh3',
+            '_route' => 'generated::ah0jBcSNPqci5kSu',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::LPjEHnngwxBIVX3d',
+            '_route' => 'generated::cXiKZnZMnYc9k8Oc',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::BifIH5lPXjDiDSe8',
+            '_route' => 'generated::T9cPoP4obpMXwdAM',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::1gVDJAxjgXqLBhEQ',
+            '_route' => 'generated::LRV2zG735j4pMvdQ',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::80vWRnHZgrsPEmJz',
+            '_route' => 'generated::t9zfdFR4tOD2PhMW',
           ),
           1 => NULL,
           2 => 
@@ -958,6 +958,25 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/creative-park/mark/delete' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'Mark.delete',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/creative-park/import/cp_students' => 
       array (
         0 => 
@@ -1017,6 +1036,45 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/tag/all' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'all.tag',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/tag/store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'store.tag',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/agent/dashboard' => 
       array (
         0 => 
@@ -1060,7 +1118,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596)))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596))|/tag/(?|edit/([^/]++)(*:626)|update/([^/]++)(*:649)|delete/([^/]++)(*:672)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1498,6 +1556,74 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
+      ),
+      626 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'edit.tag',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      649 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'update.tag',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      672 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'delete.tag',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
         1 => 
         array (
           0 => NULL,
@@ -1660,7 +1786,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::jvuMGy2iq0XDFWh3' => 
+    'generated::ah0jBcSNPqci5kSu' => 
     array (
       'methods' => 
       array (
@@ -1683,7 +1809,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::jvuMGy2iq0XDFWh3',
+        'as' => 'generated::ah0jBcSNPqci5kSu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1699,7 +1825,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::LPjEHnngwxBIVX3d' => 
+    'generated::cXiKZnZMnYc9k8Oc' => 
     array (
       'methods' => 
       array (
@@ -1721,7 +1847,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::LPjEHnngwxBIVX3d',
+        'as' => 'generated::cXiKZnZMnYc9k8Oc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1927,7 +2053,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::BifIH5lPXjDiDSe8' => 
+    'generated::T9cPoP4obpMXwdAM' => 
     array (
       'methods' => 
       array (
@@ -1948,7 +2074,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::BifIH5lPXjDiDSe8',
+        'as' => 'generated::T9cPoP4obpMXwdAM',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2002,7 +2128,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::1gVDJAxjgXqLBhEQ' => 
+    'generated::LRV2zG735j4pMvdQ' => 
     array (
       'methods' => 
       array (
@@ -2023,7 +2149,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::1gVDJAxjgXqLBhEQ',
+        'as' => 'generated::LRV2zG735j4pMvdQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2343,7 +2469,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::80vWRnHZgrsPEmJz' => 
+    'generated::t9zfdFR4tOD2PhMW' => 
     array (
       'methods' => 
       array (
@@ -2364,7 +2490,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::80vWRnHZgrsPEmJz',
+        'as' => 'generated::t9zfdFR4tOD2PhMW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4046,6 +4172,44 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'Mark.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'creative-park/mark/delete',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@MarkDelete',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@MarkDelete',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'Mark.delete',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'cp.inactive.students' => 
     array (
       'methods' => 
@@ -4225,6 +4389,200 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'import.student',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'all.tag' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'tag/all',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+          3 => 'permission:admin.all',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TagController@AllTag',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TagController@AllTag',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'all.tag',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'store.tag' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'tag/store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TagController@StoreTag',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TagController@StoreTag',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'store.tag',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'edit.tag' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'tag/edit/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TagController@EditTag',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TagController@EditTag',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'edit.tag',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'update.tag' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'tag/update/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TagController@UpdateTag',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TagController@UpdateTag',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'update.tag',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'delete.tag' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'tag/delete/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TagController@DeleteTag',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TagController@DeleteTag',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'delete.tag',
       ),
       'fallback' => false,
       'defaults' => 

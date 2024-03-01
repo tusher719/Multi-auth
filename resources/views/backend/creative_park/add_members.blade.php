@@ -40,7 +40,10 @@
                 <div class="col-md-9 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">Add Admin</h6>
+                            <h4 class="mb-4">
+                                <i class="btn-icon-prepend mx-1" data-feather="user-plus" width="18" height="18"></i>
+                                Create a new user
+                            </h4>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -124,6 +127,19 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Tags</label>
+                                        <select class="js-example-basic-multiple form-select" name="tags[]" multiple="multiple" data-width="100%">
+                                            @foreach($tags as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
                             </div>
 
                             <div class="form-check mb-4 my-3">
@@ -141,15 +157,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 grid-margin stretch-card">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Photo</label>
+                            <div class="mb-3 mt-4">
+                                <label for="address" class="form-label mt-5">Photo</label>
                                 <input type="file" name="photo" class="form-control" id="image">
                             </div>
                             <div class="mb-3">
-                                <img id="showImage" class="wd-200 rounded" src="{{ (!empty($profileData->photo)) ? url('uploads/admin_images/'.$profileData->photo) : url('uploads/no_image.jpg') }}" alt="profile">
+                                <img id="showImage" class="wd-200 " src="{{ (!empty($profileData->photo)) ? url('uploads/admin_images/'.$profileData->photo) : url('uploads/no_image.jpg') }}" alt="profile">
                             </div>
 
                         </div>
@@ -168,10 +184,10 @@
         $(document).ready(function (){
             $('#myForm').validate({
                 rules: {
-                    usernames: {
+                    student_id: {
                         required : true,
                     },
-                    names: {
+                    name: {
                         required : true,
                     },
                     email: {
@@ -180,20 +196,26 @@
                     phone: {
                         required : true,
                     },
-                    address: {
+                    batch: {
                         required : true,
                     },
-                    password: {
+                    section: {
                         required : true,
                     },
-                    roles: {
+                    gender: {
+                        required : true,
+                    },
+                    dob: {
+                        required : true,
+                    },
+                    blood: {
                         required : true,
                     },
 
                 },
                 messages :{
-                    usernames: {
-                        required : 'Please Enter Username!',
+                    student_id: {
+                        required : 'Please Enter Student ID!',
                     },
                     name: {
                         required : 'Please Enter Name!',
@@ -204,14 +226,20 @@
                     phone: {
                         required : 'Please Enter Phone!',
                     },
-                    address: {
-                        required : 'Please Enter Addres!',
+                    batch: {
+                        required : 'Please Enter Batch!',
                     },
-                    password: {
-                        required : 'Please Enter password!',
+                    section: {
+                        required : 'Please Enter Section!',
                     },
-                    roles: {
-                        required : 'Please Select Roles!',
+                    gender: {
+                        required : 'Please Select Gender!',
+                    },
+                    dob: {
+                        required : 'Please Select Date of Birth!',
+                    },
+                    blood: {
+                        required : 'Please Select Blood!',
                     },
 
 

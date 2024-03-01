@@ -121,6 +121,18 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Tags</label>
+                                        <select class="js-example-basic-multiple form-select" name="tags[]" multiple="multiple" data-width="100%">
+                                            @foreach($tags as $item)
+                                                <option value="{{ $item->id }}" @selected($info->tags->contains($item->id))>{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="form-check mb-4 my-3">

@@ -140,6 +140,12 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a href="{{ route('all.tag') }}" class="nav-link">
+                    <i class="link-icon" data-feather="tag"></i>
+                    <span class="link-title">Tags</span>
+                </a>
+            </li>
 
             <li class="nav-item nav-category">Student Manage</li>
 

@@ -6,6 +6,7 @@ use App\Exports\StudentExport;
 use App\Http\Controllers\Controller;
 use App\Imports\StudentsImport;
 use App\Models\CP\Creative_park;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,13 +26,14 @@ class CpController extends Controller
 
     // Add Members
     public function AddMember() {
-        return view('backend.creative_park.add_members');
+        $tags = Tag::all();
+        return view('backend.creative_park.add_members', compact('tags'));
     }
 
 
-    // Admin Profile Update Controller
+    // Members Added Controller
     public function StoreMembers(Request $request) {
-
+//        dd($request->tags);
 //        $auth_id->$id;
         $data = new Creative_park();
         $data->auth_id      = Auth::user()->id;
@@ -55,8 +57,12 @@ class CpController extends Controller
             $file->move(public_path('uploads/students_img'),$filename);
             $data['photo'] = $filename;
         }
-//
+
         $data->save();
+
+        if($request->has('tags')){
+            $data->tags()->attach($request->tags);
+        }
 
         $notification = array(
             'message' => 'New Student Added Success',
@@ -79,7 +85,8 @@ class CpController extends Controller
     // Edit Method
     public function EditMembers($id) {
         $info= Creative_park::findOrFail($id);
-        return view('backend.creative_park.edit_members', compact('info'));
+        $tags = Tag::all();
+        return view('backend.creative_park.edit_members', compact('info','tags'));
     }
 
     // Update Method
@@ -108,6 +115,8 @@ class CpController extends Controller
 
         $data->save();
 
+        $data->tags()->sync($request->tags);
+
         $notification = array(
             'message' => 'Student Info Updated Successfully',
             'alert-type' => 'success',
@@ -130,6 +139,7 @@ class CpController extends Controller
         }
 
         $data->delete();
+        $data->tags()->detach();
 
         $notification = array(
             'message' => 'Student Deleted Successfully',
@@ -171,6 +181,14 @@ class CpController extends Controller
         return view('backend.creative_park.clone_members', compact('info'));
     } // End Method
 
+
+    // Mark Delete Function
+    function MarkDelete(Request $request){
+        foreach ($request->mark as $mark_id){
+            Category::find($mark_id)->delete();
+        }
+        return back()->with('mark_delete', 'Marked Category Deleted');
+    }
 
     // File Import Method
     public function ImportStudents() {
