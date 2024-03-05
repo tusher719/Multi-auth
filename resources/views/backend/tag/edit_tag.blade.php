@@ -8,7 +8,7 @@
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-{{--                <li class="breadcrumb-item">Creative Park</li>--}}
+                {{--                <li class="breadcrumb-item">Creative Park</li>--}}
                 <li class="breadcrumb-item active" aria-current="page">Tag</li>
             </ol>
         </nav>
@@ -93,13 +93,13 @@
                                     {{--                            <div>Banned <span class="badge bg-danger mx-1">{{ $inactiveUser }}</span></div>--}}
                                 </h6>
 
-                                <form action="{{ route('store.tag') }}" method="post">
+                                <form action="{{ route('update.tag',$data->id) }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">Tag Name</label>
-                                                <input type="text" name="name" class="form-control" placeholder="Tag Name">
+                                                <input type="text" name="name" class="form-control" placeholder="Tag Name" value="{{ $data->name }}">
                                                 @error('name')
                                                 <small class="text-danger text-sm">
                                                     {{ $message }}
@@ -108,7 +108,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary me-3">Add Tag</button>
+                                    <button type="submit" class="btn btn-primary me-3">Update Tag</button>
                                 </form>
 
                             </div>

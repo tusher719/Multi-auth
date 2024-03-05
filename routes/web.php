@@ -102,7 +102,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/edit/students/{id}', 'EditMembers')->name('cp.edit.students');
         Route::post('/creative-park/update/students/{id}', 'UpdateMembers')->name('cp.update.students');
         Route::get('/creative-park/delete/students/{id}', 'DeleteStudent')->name('cp.delete.students');
-        Route::post('/creative-park/mark/delete', 'MarkDelete')->name('Mark.delete');
         Route::get('/students/inactive/{id}', 'InactiveStudent')->name('cp.inactive.students');
         Route::get('/students/active/{id}', 'ActiveStudent')->name('cp.active.students');
 
@@ -120,6 +119,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/tag/edit/{id}', 'EditTag')->name('edit.tag');
         Route::post('/tag/update/{id}', 'UpdateTag')->name('update.tag');
         Route::get('/tag/delete/{id}', 'DeleteTag')->name('delete.tag');
+        Route::post('/tag/mark/delete', 'MarkDelete')->name('Mark.delete');
     });
 
 }); // End Group Admin Middleware

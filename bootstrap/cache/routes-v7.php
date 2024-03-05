@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ah0jBcSNPqci5kSu',
+            '_route' => 'generated::fbKkGgvF8MDkokAj',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::cXiKZnZMnYc9k8Oc',
+            '_route' => 'generated::8YosnlGLtqpNfrLb',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::T9cPoP4obpMXwdAM',
+            '_route' => 'generated::7toxwKxaAT6vymfq',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::LRV2zG735j4pMvdQ',
+            '_route' => 'generated::791pMdz6B3CZjH3n',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::t9zfdFR4tOD2PhMW',
+            '_route' => 'generated::UYsITjYV6Ke2f1tX',
           ),
           1 => NULL,
           2 => 
@@ -958,25 +958,6 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/creative-park/mark/delete' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'Mark.delete',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/creative-park/import/cp_students' => 
       array (
         0 => 
@@ -1063,6 +1044,25 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'store.tag',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/tag/mark/delete' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'Mark.delete',
           ),
           1 => NULL,
           2 => 
@@ -1786,7 +1786,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ah0jBcSNPqci5kSu' => 
+    'generated::fbKkGgvF8MDkokAj' => 
     array (
       'methods' => 
       array (
@@ -1809,7 +1809,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ah0jBcSNPqci5kSu',
+        'as' => 'generated::fbKkGgvF8MDkokAj',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1825,7 +1825,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::cXiKZnZMnYc9k8Oc' => 
+    'generated::8YosnlGLtqpNfrLb' => 
     array (
       'methods' => 
       array (
@@ -1847,7 +1847,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::cXiKZnZMnYc9k8Oc',
+        'as' => 'generated::8YosnlGLtqpNfrLb',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2053,7 +2053,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::T9cPoP4obpMXwdAM' => 
+    'generated::7toxwKxaAT6vymfq' => 
     array (
       'methods' => 
       array (
@@ -2074,7 +2074,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::T9cPoP4obpMXwdAM',
+        'as' => 'generated::7toxwKxaAT6vymfq',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2128,7 +2128,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::LRV2zG735j4pMvdQ' => 
+    'generated::791pMdz6B3CZjH3n' => 
     array (
       'methods' => 
       array (
@@ -2149,7 +2149,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::LRV2zG735j4pMvdQ',
+        'as' => 'generated::791pMdz6B3CZjH3n',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2469,7 +2469,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::t9zfdFR4tOD2PhMW' => 
+    'generated::UYsITjYV6Ke2f1tX' => 
     array (
       'methods' => 
       array (
@@ -2490,7 +2490,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::t9zfdFR4tOD2PhMW',
+        'as' => 'generated::UYsITjYV6Ke2f1tX',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4172,44 +4172,6 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'Mark.delete' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'creative-park/mark/delete',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-          2 => 'roles:admin',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@MarkDelete',
-        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@MarkDelete',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'Mark.delete',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
     'cp.inactive.students' => 
     array (
       'methods' => 
@@ -4583,6 +4545,44 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'delete.tag',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'Mark.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'tag/mark/delete',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TagController@MarkDelete',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TagController@MarkDelete',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'Mark.delete',
       ),
       'fallback' => false,
       'defaults' => 

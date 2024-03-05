@@ -14,6 +14,10 @@ class Tag extends Model
         'name',
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class,'auth_id','id');
+    }
+
     public function students() {
         return $this->belongsToMany(Creative_park::class);
     }
