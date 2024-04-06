@@ -86,7 +86,9 @@
                                 <img id="showImage" class="wd-200 rounded" src="{{ (!empty($profileData->photo)) ? url('uploads/admin_images/'.$profileData->photo) : url('uploads/no_image.jpg') }}" alt="profile">
                             </div>
 
-                            <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                            <button type="submit" class="btn btn-primary me-2">
+                                <i data-feather="save"></i>
+                                Save Changes</button>
 
                         </form>
                     </div>

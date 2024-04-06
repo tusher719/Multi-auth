@@ -26,7 +26,7 @@
                     <h6 class="card-title">Admin All</h6>
 
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table id="dataTableExample" class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>Sl</th>

@@ -52,15 +52,10 @@
 
 {{--                        <div class="table-responsive">--}}
                         <div class="">
-                            <table id="dataTableExample" class="table">
+                            <table id="dataTableExample" class="table table-hover table-bordered">
                                 <thead>
-                                <tr>
-                                    <th>
-                                        <button type="button" class="btn btn-outline-primary btn-sm checkbox-toggle">
-                                            <i class="far fa-square"></i>
-                                        </button>
-                                        Sl
-                                    </th>
+                                <tr class="bg-dark text-white-50 ">
+                                    <th>Sl</th>
                                     <th>Image</th>
                                     <th>Student Id</th>
                                     <th>Student Name</th>

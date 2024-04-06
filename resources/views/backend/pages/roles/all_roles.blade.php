@@ -17,13 +17,13 @@
 
 
     <div class="row">
-        <div class="col-md-8 grid-margin stretch-card">
+        <div class="col-md-6 mx-auto grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Roles All</h6>
 
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table id="dataTableExample" class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>Sl</th>

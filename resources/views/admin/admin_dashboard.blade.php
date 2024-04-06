@@ -61,6 +61,9 @@ License: For each use you must have a valid license purchased only from above li
         table.dataTable td.dataTables_empty, table.dataTable th.dataTables_empty{
             text-align: center
         }
+        .table th, .table td {
+            white-space: initial;
+        }
     </style>
 </head>
 <body>

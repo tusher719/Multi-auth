@@ -196,11 +196,17 @@
             @php
                 $id = Auth::user()->id;
                 $data = App\Models\User::find($id);
+
+                $user = \App\Models\User::findOrFail($id);
+                $roles = \Spatie\Permission\Models\Role::whereHas('users', function ($query) use ($user) {
+                    $query->where('id', $user->id);
+                })->get();
             @endphp
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="wd-30 ht-30 rounded-circle" src="{{ (!empty($data->photo)) ? url('uploads/admin_images/'.$data->photo) : url('uploads/no_image.jpg') }}" alt="Admin Image"> <p class="tx-12 text-muted mx-1">{{ $data->name }}</p>
+                    <img class="wd-30 ht-30 rounded-circle" src="{{ (!empty($data->photo)) ? url('uploads/admin_images/'.$data->photo) : url('uploads/no_image.jpg') }}" alt="Admin Image">
+                    <p class="tx-14 text-muted mx-1">{{ $data->name }}</p>
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
@@ -208,8 +214,13 @@
                             <img class="wd-80 ht-80 rounded-circle" src="{{ (!empty($data->photo)) ? url('uploads/admin_images/'.$data->photo) : url('uploads/no_image.jpg') }}" alt="Admin Image">
                         </div>
                         <div class="text-center">
-                            <p class="tx-16 fw-bolder">{{ $data->name }}</p>
-                            <p class="tx-12 text-muted">{{ $data->email }}</p>
+                            <p class="tx-14 fw-bolder">{{ $data->usernames }}</p>
+                            @if($roles->count() > 0)
+                                @foreach($roles as $role)
+                                    <span class="badge border border-primary text-primary m-1 text-sm tx-10">{{ $role->name }}</span>
+                                @endforeach
+                            @endif
+                            <p class="tx-13 text-muted">{{ $data->email }}</p>
                         </div>
                     </div>
     <ul class="list-unstyled p-1">
