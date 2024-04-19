@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0xErJUOYknxyNuvN',
+            '_route' => 'generated::mXUE8ssTChElF03L',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::SQKNqkDin9PAdIY9',
+            '_route' => 'generated::1tZafoFVsWEuFKmd',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NGCFDuoPgRgBIOIl',
+            '_route' => 'generated::0RVSv80jMYkujvjY',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::PiH5vK6OBK8Xh0QW',
+            '_route' => 'generated::34dW1Ns5S4kthqWG',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::2wafZoBwRHEDNflW',
+            '_route' => 'generated::coxKGxnZHeOlxRKJ',
           ),
           1 => NULL,
           2 => 
@@ -951,6 +951,25 @@ app('router')->setCompiledRoutes(
           2 => 
           array (
             'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/creative-park/students/delete-all' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'multi.delete',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'DELETE' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -1868,7 +1887,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0xErJUOYknxyNuvN' => 
+    'generated::mXUE8ssTChElF03L' => 
     array (
       'methods' => 
       array (
@@ -1891,7 +1910,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0xErJUOYknxyNuvN',
+        'as' => 'generated::mXUE8ssTChElF03L',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1907,7 +1926,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::SQKNqkDin9PAdIY9' => 
+    'generated::1tZafoFVsWEuFKmd' => 
     array (
       'methods' => 
       array (
@@ -1929,7 +1948,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::SQKNqkDin9PAdIY9',
+        'as' => 'generated::1tZafoFVsWEuFKmd',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2135,7 +2154,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::NGCFDuoPgRgBIOIl' => 
+    'generated::0RVSv80jMYkujvjY' => 
     array (
       'methods' => 
       array (
@@ -2156,7 +2175,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::NGCFDuoPgRgBIOIl',
+        'as' => 'generated::0RVSv80jMYkujvjY',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2210,7 +2229,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::PiH5vK6OBK8Xh0QW' => 
+    'generated::34dW1Ns5S4kthqWG' => 
     array (
       'methods' => 
       array (
@@ -2231,7 +2250,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::PiH5vK6OBK8Xh0QW',
+        'as' => 'generated::34dW1Ns5S4kthqWG',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2551,7 +2570,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::2wafZoBwRHEDNflW' => 
+    'generated::coxKGxnZHeOlxRKJ' => 
     array (
       'methods' => 
       array (
@@ -2572,7 +2591,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::2wafZoBwRHEDNflW',
+        'as' => 'generated::coxKGxnZHeOlxRKJ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4239,6 +4258,44 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'cp.delete.students',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'multi.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'creative-park/students/delete-all',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@MultiDelete',
+        'controller' => 'App\\Http\\Controllers\\Backend\\Creative_Park\\CpController@MultiDelete',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'multi.delete',
       ),
       'fallback' => false,
       'defaults' => 

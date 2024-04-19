@@ -103,6 +103,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/edit/students/{id}', 'EditMembers')->name('cp.edit.students');
         Route::post('/creative-park/update/students/{id}', 'UpdateMembers')->name('cp.update.students');
         Route::get('/creative-park/delete/students/{id}', 'DeleteStudent')->name('cp.delete.students');
+        Route::delete('/creative-park/students/delete-all', 'MultiDelete')->name('multi.delete');
         Route::get('/students/inactive/{id}', 'InactiveStudent')->name('cp.inactive.students');
         Route::get('/students/active/{id}', 'ActiveStudent')->name('cp.active.students');
 

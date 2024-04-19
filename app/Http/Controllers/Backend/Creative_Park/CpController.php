@@ -38,7 +38,7 @@ class CpController extends Controller
         $data->name         = $request->name;
         $data->email        = $request->email;
         $data->phone        = $request->phone;
-        $data->phone_2        = $request->phone_2;
+        $data->phone_2      = $request->phone_2;
         $data->batch        = $request->batch;
         $data->section      = $request->section;
         $data->gender       = $request->gender;
@@ -137,6 +137,15 @@ class CpController extends Controller
         );
         return redirect()->back()->with($notification);
     } // End Method
+
+
+    public function MultiDelete(Request $request)
+    {
+        $ids = $request->ids;
+        Creative_park::whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['status'=>true,'message'=>"User successfully removed."]);
+
+    }
 
 
     // Product Active Inactive
