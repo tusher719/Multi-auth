@@ -96,14 +96,14 @@
                                                 @if($item->status == 'active')
                                                     <span class="badge border border-success text-success">
                                                     <i data-feather="user-check" class="icon-sm" width="24" height="24" ></i>
-                                                    Active
-                                                </span></td>
-                                            @else
-                                                <span class="badge border border-danger text-danger">
-                                                <i data-feather="user-x" class="icon-sm" width="24" height="24" ></i>
-                                                Banned
-                                            </span>
-                                            @endif
+                                                        Active
+                                                    </span>
+                                                @else
+                                                    <span class="badge border border-danger text-danger">
+                                                        <i data-feather="user-x" class="icon-sm" width="24" height="24" ></i>
+                                                        Banned
+                                                    </span>
+                                                @endif
                                             <td>
                                                 {{--                                            @if(Auth::user()->can('admin.edit'))--}}
                                                 {{--                                                <a href="{{ route('cp.edit.students',$item->id) }}" class="btn btn-inverse-primary">View</a>--}}
@@ -170,6 +170,85 @@
                             </table>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            @foreach ($students as $key => $item)
+                                <div class="col-md-3 mb-4">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="position: absolute; top: 10px; right: 10px">
+                                            @if($item->status == 'active')
+                                                <span class="badge text-success">
+                                                    <i data-feather="user-check" class="icon-sm" width="24" height="24" ></i>
+                                                        Active
+                                                    </span>
+                                            @else
+                                                <span class="badge text-danger">
+                                                        <i data-feather="user-x" class="icon-sm" width="24" height="24" ></i>
+                                                        Banned
+                                                    </span>
+                                            @endif
+                                        </div>
+                                        <div class="d-flex mt-2">
+                                            <div style="margin-right: 20px;">
+                                                <img src="{{ (!empty($item->photo)) ? url('uploads/students_img/'.$item->photo) : url('uploads/no_image.jpg') }}" width="100px" class="rounded img-fluid" alt="...">
+                                            </div>
+                                            <div>
+                                                <h5 class="card-title mb-3">{{ $item->name }}</h5>
+                                                <h6 class="card-subtitle mb-3 text-body-secondary">{{ $item->student_id }}</h6>
+                                                <h6 class="card-subtitle mb-3 text-body-secondary">{{ $item->phone }}</h6>
+                                                <h6 class="card-subtitle mb-2 text-body-secondary">{{ $item->email }}</h6>
+                                                <div class="d-flex">
+
+                                                    @if(Auth::user()->can('admin.edit'))
+                                                        <a class="dropdown-item d-flex align-items-center text-sm" style="font-size: 12px;" href="{{ route('cp.view.details',$item->id) }}">
+                                                            <i data-feather="eye" class="icon-sm" width="24" height="24" ></i>
+                                                        </a>
+                                                    @endif
+                                                    @if(Auth::user()->can('admin.delete'))
+                                                        <a class="dropdown-item d-flex align-items-center" style="font-size: 12px;" href="{{ route('cp.clone.students',$item->id) }}">
+                                                            <i data-feather="copy" class="icon-sm" width="24" height="24" ></i>
+                                                        </a>
+                                                    @endif
+                                                    @if(Auth::user()->can('admin.edit'))
+                                                        <a class="dropdown-item d-flex align-items-center" style="font-size: 12px;" href="{{ route('cp.edit.students',$item->id) }}">
+                                                            <i data-feather="edit-2" class="icon-sm" width="24" height="24" ></i>
+                                                        </a>
+                                                    @endif
+                                                    @if(Auth::user()->can('admin.delete'))
+                                                        <a class="dropdown-item d-flex align-items-center" style="font-size: 12px;" id="delete" href="{{ route('cp.delete.students',$item->id) }}">
+                                                            <i data-feather="trash-2" class="icon-sm" width="24" height="24"></i>
+                                                        </a>
+                                                    @endif
+                                                        @if($item->status == 'active')
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.inactive.students',$item->id) }}">
+                                                                <i data-feather="user-x" class="icon-sm text-danger" width="24" height="24" ></i>
+                                                            </a>
+                                                        @else
+                                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('cp.active.students',$item->id) }}">
+                                                                <i data-feather="user-check" class="icon-sm text-success" width="24" height="24" ></i>
+                                                            </a>
+                                                        @endif
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
