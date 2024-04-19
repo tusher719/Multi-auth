@@ -7,6 +7,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\Creative_Park\CpController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\WalletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +121,14 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/tag/update/{id}', 'UpdateTag')->name('update.tag');
         Route::get('/tag/delete/{id}', 'DeleteTag')->name('delete.tag');
         Route::post('/tag/mark/delete', 'MarkDelete')->name('Mark.delete');
+    });
+
+    // Wallet All Route
+    Route::controller(WalletController::class)->group(function(){
+        Route::get('/wallet', 'Wallet')->name('wallet');
+        Route::post('/wallet/store', 'StoreWallet')->name('store.wallet');
+        Route::get('/wallet/delete/{id}', 'DeleteWallet')->name('delete.wallet');
+        Route::get('/wallet/analytics', 'ShowPieChart')->name('wallet.analytics');
     });
 
 }); // End Group Admin Middleware

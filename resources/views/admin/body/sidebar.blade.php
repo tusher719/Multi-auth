@@ -170,6 +170,37 @@
                 </div>
             </li>
 
+
+            <li class="nav-item nav-category">Privet</li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false" aria-controls="RolePermission">
+                    <i class="link-icon" data-feather="anchor"></i>
+                    <span class="link-title">Wallet</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="cp">
+                    <ul class="nav sub-menu">
+                        @if(Auth::user()->can('admin.all'))
+                            <li class="nav-item">
+                                <a href="{{ route('wallet') }}" class="nav-link">Accounts</a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->can('admin.add'))
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Records</a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->can('admin.add'))
+                            <li class="nav-item">
+                                <a href="{{ route('wallet.analytics') }}" class="nav-link">Analytics</a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </div>
+            </li>
+
             <li class="nav-item nav-category">Docs</li>
             <li class="nav-item">
                 <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

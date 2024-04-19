@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::K0V0yEtwjD8kcCIr',
+            '_route' => 'generated::0xErJUOYknxyNuvN',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Et0V0nW1Npb7izYO',
+            '_route' => 'generated::SQKNqkDin9PAdIY9',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::lVAmSwwu0dqFAtBM',
+            '_route' => 'generated::NGCFDuoPgRgBIOIl',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3LXJK94RyI4xrC2M',
+            '_route' => 'generated::PiH5vK6OBK8Xh0QW',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::jzJUzK21FVxioY36',
+            '_route' => 'generated::2wafZoBwRHEDNflW',
           ),
           1 => NULL,
           2 => 
@@ -1075,6 +1075,65 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/wallet' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wallet',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/wallet/store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'store.wallet',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/wallet/analytics' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wallet.analytics',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/agent/dashboard' => 
       array (
         0 => 
@@ -1118,7 +1177,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596))|/tag/(?|edit/([^/]++)(*:626)|update/([^/]++)(*:649)|delete/([^/]++)(*:672)))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596))|/tag/(?|edit/([^/]++)(*:626)|update/([^/]++)(*:649)|delete/([^/]++)(*:672))|/wallet/delete/([^/]++)(*:704))/?$}sDu',
     ),
     3 => 
     array (
@@ -1624,6 +1683,29 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
+      ),
+      704 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'delete.wallet',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
         1 => 
         array (
           0 => NULL,
@@ -1786,7 +1868,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::K0V0yEtwjD8kcCIr' => 
+    'generated::0xErJUOYknxyNuvN' => 
     array (
       'methods' => 
       array (
@@ -1809,7 +1891,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::K0V0yEtwjD8kcCIr',
+        'as' => 'generated::0xErJUOYknxyNuvN',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1825,7 +1907,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Et0V0nW1Npb7izYO' => 
+    'generated::SQKNqkDin9PAdIY9' => 
     array (
       'methods' => 
       array (
@@ -1847,7 +1929,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Et0V0nW1Npb7izYO',
+        'as' => 'generated::SQKNqkDin9PAdIY9',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2053,7 +2135,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::lVAmSwwu0dqFAtBM' => 
+    'generated::NGCFDuoPgRgBIOIl' => 
     array (
       'methods' => 
       array (
@@ -2074,7 +2156,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::lVAmSwwu0dqFAtBM',
+        'as' => 'generated::NGCFDuoPgRgBIOIl',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2128,7 +2210,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3LXJK94RyI4xrC2M' => 
+    'generated::PiH5vK6OBK8Xh0QW' => 
     array (
       'methods' => 
       array (
@@ -2149,7 +2231,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::3LXJK94RyI4xrC2M',
+        'as' => 'generated::PiH5vK6OBK8Xh0QW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2469,7 +2551,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::jzJUzK21FVxioY36' => 
+    'generated::2wafZoBwRHEDNflW' => 
     array (
       'methods' => 
       array (
@@ -2490,7 +2572,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::jzJUzK21FVxioY36',
+        'as' => 'generated::2wafZoBwRHEDNflW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4583,6 +4665,161 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'Mark.delete',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wallet' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@Wallet',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@Wallet',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wallet',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'store.wallet' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'wallet/store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@StoreWallet',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@StoreWallet',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'store.wallet',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'delete.wallet' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet/delete/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@DeleteWallet',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@DeleteWallet',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'delete.wallet',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wallet.analytics' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet/analytics',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@ShowPieChart',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@ShowPieChart',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wallet.analytics',
       ),
       'fallback' => false,
       'defaults' => 

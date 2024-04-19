@@ -7,8 +7,8 @@ $(function() {
   $(function() {
     $('#dataTableExample').DataTable({
       "aLengthMenu": [
-        [10, 30, 50, -1],
-        [10, 30, 50, "All"]
+        [10, 20, 30, 50, 100, -1],
+        [10, 20, 30, 50, 100, "All"]
       ],
       "iDisplayLength": 10,
       "language": {
