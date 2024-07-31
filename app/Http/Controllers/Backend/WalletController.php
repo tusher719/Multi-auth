@@ -140,8 +140,7 @@ class WalletController extends Controller
     // Update Method
     public function UpdateWallet(Request $request, $id)
     {
-        $data = WalletHistory::where('id', $id)->first();
-        // $data                   = new Wallet();
+        $data = Wallet::where('id', $id)->first();
         $data->name             = $request->name;
         $data->amount           = $request->amount;
         $data->record           = $request->record;
@@ -156,7 +155,7 @@ class WalletController extends Controller
             'message'       => 'Update Wallet Successfully!',
             'alert-type'    => 'success',
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route("wallet")->with($notification);
     }
 
 

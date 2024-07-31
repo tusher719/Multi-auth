@@ -32,19 +32,19 @@
                 <div class="row mb-4">
                     <div class="col-md-2">
                         <label class="form-label">Average Amount:</label>
-                        <input type="text" class="form-control" disabled id="average_amount" name="average_amount" readonly placeholder="Average Amount"/>
+                        <input type="text" class="alert alert-secondary" disabled id="average_amount" name="average_amount" readonly placeholder="Average Amount"/>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Total Amount:</label>
-                        <input type="text" class="form-control" disabled id="total_amount" name="total_amount" readonly placeholder="Total Amount"/>
+                        <input type="text" class="alert alert-light" disabled id="total_amount" name="total_amount" readonly placeholder="Total Amount"/>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Total Due:</label>
-                        <input type="text" class="form-control" disabled id="total_due" name="total_due" readonly placeholder="Total Due"/>
+                        <input type="text" class="alert alert-danger" disabled id="total_due" name="total_due" readonly placeholder="Total Due"/>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Total Extra:</label>
-                        <input type="text" class="form-control" disabled id="total_extra" name="total_extra" readonly placeholder="Total Extra"/>
+                        <input type="text" class="alert alert-success" disabled id="total_extra" name="total_extra" readonly placeholder="Total Extra"/>
                     </div>
                 </div>
 
