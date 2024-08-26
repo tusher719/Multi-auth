@@ -37,7 +37,7 @@
                                             <div class="col-md-8">
                                                 <div class="mb-3">
                                                     <label class="form-label">Amount</label>
-                                                    <input type="text" name="amount" class="form-control form-control-lg" autocomplete="off" placeholder="Amount">
+                                                    <input type="text" name="amount" class="form-control form-control-lg" data-inputmask="'alias': 'currency', 'prefix':'$'" autocomplete="off" placeholder="Amount">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -163,7 +163,7 @@
                 <div class="col-md-2">
                     <div class="alert alert-secondary" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($total,2) }}</h4>
-                        <p>Total</p>
+                        <p>Total Amount</p>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -171,7 +171,7 @@
                         <div class="d-flex">
                             <h4 class="alert-heading px-1 mb-1 tx-16">{{ number_format($todayIncome,2) }}</h4>
                         </div>
-                        <p>Today ( <span class="tx-12">{{ \Carbon\Carbon::parse($today)->format("D, d-M") }}</span> ) </p>
+                        <p>Today </p>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -179,47 +179,82 @@
                         <div class="d-flex">
                             <h4 class="alert-heading px-1 mb-1 tx-16">{{ number_format($yesterdayIncome,2) }}</h4>
                         </div>
-                        <p>Yesterday ( <span class="tx-12">{{ \Carbon\Carbon::parse($yesterday)->format("D, d-M") }}</span> ) </p>
+                        <p>Yesterday</p>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($lastsevenday,2) }}</h4>
-                        <p>Last 7 days ( <span class="tx-12">{{ Carbon\Carbon::parse($sevenDaysAgo)->format('D,d M')  }} - {{ Carbon\Carbon::parse($currentDate)->format('D,d M')  }}</span> )</p>
+                        <p>Last 7 days </p>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($thisWeek,2) }}</h4>
-                        <p>This Week ( <span class="tx-12">{{ Carbon\Carbon::parse($startOfWeek)->format('D, d M')  }} - {{ Carbon\Carbon::parse($endOfWeek)->format('D d M')  }}</span> )</p>
+                        <p>This Week </p>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert alert-light" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($thismonth,2) }}</h4>
-                        <p>This Month ( <span class="tx-12">{{ $monthe }}</span> )</p>
+                        <p>This Month </p>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert alert-secondary" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($lastmonth,2) }}</h4>
-                        <p>Last Month ( <span class="tx-12">{{ $lastMonthName }}</span> ) </p>
+                        <p>Last Month </p>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($thisyear,2) }}</h4>
-                        <p>This Year ( <span class="tx-12">{{ $year }}</span> ) </p>
+                        <p>This Year </p>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading mb-1 tx-16">{{ number_format($lastYear,2) }}</h4>
-                        <p>Last Year ( <span class="tx-12">{{ $lastYearName }}</span> ) </p>
+                        <p>Last Year </p>
                     </div>
                 </div>
 
             </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filter">
+                        <div class="mb-3">
+                            <label for="exampleFormControlSelect1" class="form-label">Filter</label>
+                            <select class="form-select" id="exampleFormControlSelect1" onchange="filterData(this.value)">
+                                <option selected="" disabled="">Filter</option>
+                                <option value="today">Today</option>
+                                <option value="yesterday">Yesterday</option>
+                                <option value="last7days">Last 7 days</option>
+                                <option value="thisweek">This Week</option>
+                                <option value="thismonth">This Month</option>
+                                <option value="lastmonth">Last Month</option>
+                                <option value="thisyear">This Year</option>
+                                <option value="lastyear">Last Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <script>
+                function filterData(filterValue) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('filter.data') }}',
+                        data: { filter: filterValue },
+                        success: function(data) {
+                            $('#filtered-data').html(data);
+                        }
+                    });
+                }
+            </script>
         </div>
 
         @foreach ($alldata as $key => $item)
@@ -313,7 +348,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     @if(Auth::user()->can('admin.edit'))
-                                        <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('cp.edit.students',$item->id) }}">
+                                        <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('edit.wallet',$item->id) }}">
                                             <i data-feather="edit-2" class="icon-sm" width="24" height="24" ></i>
                                             <span class="mx-3">Edit</span>
                                         </a>
@@ -382,3 +417,23 @@
     </script>
 
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

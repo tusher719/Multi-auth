@@ -10,20 +10,22 @@ use Illuminate\Support\Facades\Auth;
 class TagController extends Controller
 {
     //
-    public function AllTag() {
+    public function AllTag()
+    {
         $tags   = Tag::latest()->get();
         $total  = Tag::count();
-        return view('backend.tag.tag_all',compact('tags','total'));
+        return view('backend.tag.tag_all', compact('tags', 'total'));
     }
 
-    public function StoreTag (Request $request) {
+    public function StoreTag(Request $request)
+    {
         $request->validate([
             'name' => 'required | unique:tags'
         ], [
             'name' => 'This name already exists!',
         ]);
 
-//        dd($request->all());
+        //        dd($request->all());
         $data           = new Tag();
         $data->auth_id  = Auth::user()->id;
         $data->name     = $request->name;
@@ -37,16 +39,18 @@ class TagController extends Controller
     }
 
     // Edit Method
-    public function EditTag($id) {
+    public function EditTag($id)
+    {
         $tags   = Tag::latest()->get();
         $data   = Tag::findOrFail($id);
         $total  = Tag::count();
-        return view('backend.tag.edit_tag', compact('tags', 'data','total'));
+        return view('backend.tag.edit_tag', compact('tags', 'data', 'total'));
     }
 
 
     // Update Method
-    public function UpdateTag (Request $request, $id) {
+    public function UpdateTag(Request $request, $id)
+    {
         $data = Tag::where('id', $id)->first();
 
         $data->auth_id  = Auth::user()->id;
@@ -61,7 +65,8 @@ class TagController extends Controller
     } // End Method
 
     // Delete Permission
-    public function DeleteTag($id){
+    public function DeleteTag($id)
+    {
         Tag::findOrFail($id)->delete();
 
         $notification = array(
@@ -72,7 +77,8 @@ class TagController extends Controller
     } // End Method
 
     // Mark Delete Function
-    function MarkDelete(Request $request){
+    function MarkDelete(Request $request)
+    {
         if (is_null($request->mark)) {
             $notification = array(
                 'message'       => 'Please Select Tags',
@@ -81,7 +87,7 @@ class TagController extends Controller
             return redirect()->back()->with($notification);
         }
 
-        foreach ($request->mark as $mark_id){
+        foreach ($request->mark as $mark_id) {
             Tag::find($mark_id)->delete();
         }
         $notification = array(
@@ -90,5 +96,4 @@ class TagController extends Controller
         );
         return redirect()->back()->with($notification);
     }
-
 }

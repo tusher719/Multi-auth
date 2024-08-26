@@ -7,6 +7,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\Creative_Park\CpController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\TodosController;
 use App\Http\Controllers\Backend\WalletController;
 
 /*
@@ -34,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Admin Group Middleware
 Route::middleware(['auth', 'roles:admin'])->group(function () {
@@ -49,7 +50,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 
     // Permissions All Route
-    Route::controller(RoleController::class)->group(function(){
+    Route::controller(RoleController::class)->group(function () {
         Route::get('/all/permission', 'AllPermission')->name('all.permission');
         Route::get('/add/permission', 'AddPermission')->name('add.permission');
         Route::post('/store/permission', 'StorePermission')->name('store.permission');
@@ -64,7 +65,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     });
 
     // Roles All Route
-    Route::controller(RoleController::class)->group(function(){
+    Route::controller(RoleController::class)->group(function () {
         Route::get('/all/roles', 'AllRoles')->name('all.roles');
         Route::get('/add/roles', 'AddRoles')->name('add.roles');
         Route::post('/store/roles', 'StoreRoles')->name('store.roles');
@@ -84,7 +85,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 
     // Admin User All Route
-    Route::controller(AdminController::class)->group(function(){
+    Route::controller(AdminController::class)->group(function () {
         Route::get('/all/admin', 'AllAdmin')->name('all.admin')->middleware('permission:admin.all');
         Route::get('/add/admin', 'AddAdmin')->name('add.admin')->middleware('permission:admin.add');
         Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
@@ -94,7 +95,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     });
 
     // Creative Park All Route
-    Route::controller(CpController::class)->group(function(){
+    Route::controller(CpController::class)->group(function () {
         Route::get('/creative-park/all/students', 'AllMembers')->name('all.cp.members')->middleware('permission:admin.all');
         Route::get('/creative-park/add/students', 'AddMember')->name('add.cp.member')->middleware('permission:admin.add');
         Route::post('/creative-park/store/students', 'StoreMembers')->name('cp.store.members');
@@ -111,11 +112,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/import/cp_students', 'ImportStudents')->name('import.students');
         Route::get('/creative-park/export/student', 'ExportStudent')->name('export.student');
         Route::post('/creative-park/import/student', 'ImportStudent')->name('import.student');
-
     });
 
     // Tag All Route
-    Route::controller(TagController::class)->group(function(){
+    Route::controller(TagController::class)->group(function () {
         Route::get('/tag/all', 'AllTag')->name('all.tag')->middleware('permission:admin.all');
         Route::post('/tag/store', 'StoreTag')->name('store.tag');
         Route::get('/tag/edit/{id}', 'EditTag')->name('edit.tag');
@@ -125,13 +125,26 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     });
 
     // Wallet All Route
-    Route::controller(WalletController::class)->group(function(){
+    Route::controller(WalletController::class)->group(function () {
         Route::get('/wallet', 'Wallet')->name('wallet');
         Route::post('/wallet/store', 'StoreWallet')->name('store.wallet');
+        Route::get('/wallet/edit/{id}', 'EditWallet')->name('edit.wallet');
+        Route::post('/wallet/update/{id}', 'UpdateWallet')->name('update.wallet');
         Route::get('/wallet/delete/{id}', 'DeleteWallet')->name('delete.wallet');
         Route::get('/wallet/analytics', 'ShowPieChart')->name('wallet.analytics');
+        Route::get('/wallet/record', 'recordPage')->name('wallet.record');
+        Route::post('/wallet/record/submit-form', 'SumitForm')->name('submit.form');
     });
 
+    // Tag All Route
+    Route::controller(TodosController::class)->group(function () {
+        Route::get('/todos/all', 'AllTodos')->name('all.todos');
+        Route::post('/todos/store', 'StoreTodos')->name('store.todos');
+        Route::get('/todos/edit/{id}', 'EditTodos')->name('edit.todos');
+        Route::post('/todos/update/{id}', 'UpdateTodos')->name('update.todos');
+        Route::get('/todos/delete/{id}', 'DeleteTodos')->name('delete.todos');
+        // Route::post('/todos/mark/delete', 'MarkDelete')->name('Mark.delete');
+    });
 }); // End Group Admin Middleware
 
 

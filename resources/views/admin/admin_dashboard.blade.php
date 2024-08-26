@@ -110,6 +110,13 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="{{ asset('backend') }}/assets/js/template.js"></script>
 	<!-- endinject -->
 
+    {{-- <script src="{{ asset('backend') }}/assets/js/select2.js"></script> --}}
+    <script src="{{ asset('backend') }}/assets/vendors/inputmask/jquery.inputmask.min.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/inputmask.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/select2.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/typeahead.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/tags-input.js"></script>
+
 	<!-- Custom js for this page -->
     <script src="{{ asset('backend') }}/assets/js/dashboard-dark.js"></script>
 	<!-- End custom js for this page -->

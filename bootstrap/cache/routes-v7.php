@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::mXUE8ssTChElF03L',
+            '_route' => 'generated::torRkPQL9TwzKixH',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::1tZafoFVsWEuFKmd',
+            '_route' => 'generated::HVCZsIsLdQBGSW9R',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0RVSv80jMYkujvjY',
+            '_route' => 'generated::GT68ZOeQqmXvp1Yh',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::34dW1Ns5S4kthqWG',
+            '_route' => 'generated::DW4YLbb0vc9D8nc9',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::coxKGxnZHeOlxRKJ',
+            '_route' => 'generated::ACxqm7rMYOT83fvl',
           ),
           1 => NULL,
           2 => 
@@ -1153,6 +1153,104 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/wallet/record' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wallet.record',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/wallet/record/submit-form' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'submit.form',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/filter/data' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'filter.data',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/todos/all' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'all.todos',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/todos/store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'store.todos',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/agent/dashboard' => 
       array (
         0 => 
@@ -1196,7 +1294,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596))|/tag/(?|edit/([^/]++)(*:626)|update/([^/]++)(*:649)|delete/([^/]++)(*:672))|/wallet/delete/([^/]++)(*:704))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/verify\\-email/([^/]++)/([^/]++)(*:71)|/edit/(?|permission/([^/]++)(*:106)|roles/([^/]++)(*:128)|admin/([^/]++)(*:150))|/delete/(?|permission/([^/]++)(*:189)|roles/([^/]++)(*:211)|admin/([^/]++)(*:233))|/admin/(?|edit/roles/([^/]++)(*:271)|roles/update/([^/]++)(*:300)|delete/roles/([^/]++)(*:329))|/update/admin/([^/]++)(*:360)|/creative\\-park/(?|view/students/([^/]++)(*:409)|clone/students/([^/]++)(*:440)|edit/students/([^/]++)(*:470)|update/students/([^/]++)(*:502)|delete/students/([^/]++)(*:534))|/students/(?|inactive/([^/]++)(*:573)|active/([^/]++)(*:596))|/t(?|ag/(?|edit/([^/]++)(*:629)|update/([^/]++)(*:652)|delete/([^/]++)(*:675))|odos/(?|edit/([^/]++)(*:705)|update/([^/]++)(*:728)|delete/([^/]++)(*:751)))|/wallet/(?|edit/([^/]++)(*:785)|update/([^/]++)(*:808)|delete/([^/]++)(*:831)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1635,7 +1733,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      626 => 
+      629 => 
       array (
         0 => 
         array (
@@ -1658,7 +1756,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      649 => 
+      652 => 
       array (
         0 => 
         array (
@@ -1680,7 +1778,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      672 => 
+      675 => 
       array (
         0 => 
         array (
@@ -1703,7 +1801,120 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      704 => 
+      705 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'edit.todos',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      728 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'update.todos',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      751 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'delete.todos',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      785 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'edit.wallet',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      808 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'update.wallet',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      831 => 
       array (
         0 => 
         array (
@@ -1887,7 +2098,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::mXUE8ssTChElF03L' => 
+    'generated::torRkPQL9TwzKixH' => 
     array (
       'methods' => 
       array (
@@ -1910,7 +2121,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::mXUE8ssTChElF03L',
+        'as' => 'generated::torRkPQL9TwzKixH',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1926,7 +2137,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::1tZafoFVsWEuFKmd' => 
+    'generated::HVCZsIsLdQBGSW9R' => 
     array (
       'methods' => 
       array (
@@ -1948,7 +2159,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::1tZafoFVsWEuFKmd',
+        'as' => 'generated::HVCZsIsLdQBGSW9R',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2154,7 +2365,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0RVSv80jMYkujvjY' => 
+    'generated::GT68ZOeQqmXvp1Yh' => 
     array (
       'methods' => 
       array (
@@ -2175,7 +2386,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0RVSv80jMYkujvjY',
+        'as' => 'generated::GT68ZOeQqmXvp1Yh',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2229,7 +2440,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::34dW1Ns5S4kthqWG' => 
+    'generated::DW4YLbb0vc9D8nc9' => 
     array (
       'methods' => 
       array (
@@ -2250,7 +2461,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::34dW1Ns5S4kthqWG',
+        'as' => 'generated::DW4YLbb0vc9D8nc9',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2570,7 +2781,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::coxKGxnZHeOlxRKJ' => 
+    'generated::ACxqm7rMYOT83fvl' => 
     array (
       'methods' => 
       array (
@@ -2591,7 +2802,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::coxKGxnZHeOlxRKJ',
+        'as' => 'generated::ACxqm7rMYOT83fvl',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4814,6 +5025,83 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'edit.wallet' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet/edit/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@EditWallet',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@EditWallet',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'edit.wallet',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'update.wallet' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'wallet/update/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@UpdateWallet',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@UpdateWallet',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'update.wallet',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'delete.wallet' => 
     array (
       'methods' => 
@@ -4877,6 +5165,315 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'wallet.analytics',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wallet.record' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet/record',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@recordPage',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@recordPage',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wallet.record',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'submit.form' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'wallet/record/submit-form',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@SumitForm',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@SumitForm',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'submit.form',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'filter.data' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'filter/data',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'WalletController@filterData',
+        'controller' => 'WalletController@filterData',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'filter.data',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'all.todos' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'todos/all',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TodosController@AllTodos',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TodosController@AllTodos',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'all.todos',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'store.todos' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'todos/store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TodosController@StoreTodos',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TodosController@StoreTodos',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'store.todos',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'edit.todos' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'todos/edit/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TodosController@EditTodos',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TodosController@EditTodos',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'edit.todos',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'update.todos' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'todos/update/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TodosController@UpdateTodos',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TodosController@UpdateTodos',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'update.todos',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'delete.todos' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'todos/delete/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\TodosController@DeleteTodos',
+        'controller' => 'App\\Http\\Controllers\\Backend\\TodosController@DeleteTodos',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'delete.todos',
       ),
       'fallback' => false,
       'defaults' => 

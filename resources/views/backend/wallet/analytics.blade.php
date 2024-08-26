@@ -85,6 +85,26 @@
                 </div>
                 <div class="col-md-6">
                     <h4>Expense</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @foreach($incomeData as $data)
+                                <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }} <br>
+                            @endforeach
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            @foreach($expenseData as $data)
+                                <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }} <br>
+                            @endforeach
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            @foreach($incomeExpenseData as $data)
+{{--                                {{ $data }} <br>--}}
+                                <b>{{ $data->name }}</b> -
+                                {{ $data->total_income }} -
+                                {{ $data->total_expense }} <br>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

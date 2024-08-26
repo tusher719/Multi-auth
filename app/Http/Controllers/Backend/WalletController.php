@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Calculate_Amounts;
+use App\Models\Main_Amounts;
 use App\Models\Wallet;
+use App\Models\WalletHistory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +14,8 @@ use Illuminate\Support\Facades\DB;
 class WalletController extends Controller
 {
     //
-    public function Wallet() {
+    public function Wallet()
+    {
         $monthe     = date('F');
         $lastMonthName = date('F', strtotime('last month'));
         $year       = date('Y');
@@ -25,7 +29,7 @@ class WalletController extends Controller
 
         // Today
         $today      = Carbon::today()->format('Y-m-d');
-        $todayIncome   = Wallet::where('rdate', $today)->where('record', 'expense')->sum('amount');
+        $todayIncome   = Wallet::where('rdate', $today)->where('record', 'income')->sum('amount');
 
         // Yesterday
         $yesterday = Carbon::yesterday()->format('Y-m-d');
@@ -43,7 +47,7 @@ class WalletController extends Controller
         $thisWeekData = Wallet::whereBetween('rdate', [$startOfWeek, $endOfWeek])->where('record', 'income')->get();
         $thisWeek = $thisWeekData->sum('amount');
 
-//        $monthdata      = Wallet::whereMonth('rdate', Carbon::now())->where('record', 'expense')->get();
+        //        $monthdata      = Wallet::whereMonth('rdate', Carbon::now())->where('record', 'expense')->get();
 
         $currentMonth = Carbon::now()->month;
         $currentYear = Carbon::now()->year;
@@ -68,7 +72,7 @@ class WalletController extends Controller
         $lastYearData = Wallet::whereBetween('rdate', [$startOfLastYear, $endOfLastYear])->where('record', 'expense')->get();
         $lastYear = $lastYearData->sum('amount');
 
-        return view('backend.wallet.wallet',[
+        return view('backend.wallet.wallet', [
             'alldata' => $alldata,
 
             'monthe' => $monthe,
@@ -105,11 +109,12 @@ class WalletController extends Controller
     }
 
 
-    public function StoreWallet(Request $request) {
+    public function StoreWallet(Request $request)
+    {
 
         $data                   = new Wallet();
         $data->name             = $request->name;
-        $data->amount           = $request->amount;
+        $data->amount           = str_replace(['$', ','], '', $request->amount);
         $data->record           = $request->record;
         $data->payment_type     = $request->payment_type;
         $data->rdate            = $request->rdate;
@@ -125,9 +130,39 @@ class WalletController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    // Edit Method
+    public function EditWallet($id)
+    {
+        $info = Wallet::findOrFail($id);
+        return view('backend.wallet.edit', compact('info'));
+    } // End Method
+
+    // Update Method
+    public function UpdateWallet(Request $request, $id)
+    {
+        $data = Wallet::where('id', $id)->first();
+        $data->name             = $request->name;
+        $data->amount           = $request->amount;
+        $data->record           = $request->record;
+        $data->payment_type     = $request->payment_type;
+        $data->rdate            = $request->rdate;
+        $data->rtime            = $request->rtime;
+        $data->note             = $request->note;
+        $data->status           = $request->status;
+        $data->save();
+
+        $notification = array(
+            'message'       => 'Update Wallet Successfully!',
+            'alert-type'    => 'success',
+        );
+        return redirect()->route("wallet")->with($notification);
+    }
+
+
 
     // Delete Permission
-    public function DeleteWallet($id){
+    public function DeleteWallet($id)
+    {
         Wallet::findOrFail($id)->delete();
 
         $notification = array(
@@ -139,7 +174,8 @@ class WalletController extends Controller
 
 
     // Pie Chart
-    public function ShowPieChart() {
+    public function ShowPieChart()
+    {
         $monthe     = date('F');
         $lastMonthName = date('F', strtotime('last month'));
         $year       = date('Y');
@@ -149,7 +185,7 @@ class WalletController extends Controller
 
         // Today
         $today      = Carbon::today()->format('Y-m-d');
-        $todayIncome   = Wallet::where('rdate', $today)->where('record', 'expense')->sum('amount');
+        $todayIncome   = Wallet::where('rdate', $today)->where('record', 'income')->sum('amount');
 
         // Yesterday
         $yesterday = Carbon::yesterday()->format('Y-m-d');
@@ -167,7 +203,7 @@ class WalletController extends Controller
         $thisWeekData = Wallet::whereBetween('rdate', [$startOfWeek, $endOfWeek])->where('record', 'income')->get();
         $thisWeek = $thisWeekData->sum('amount');
 
-//        $monthdata      = Wallet::whereMonth('rdate', Carbon::now())->where('record', 'expense')->get();
+        //        $monthdata      = Wallet::whereMonth('rdate', Carbon::now())->where('record', 'expense')->get();
 
         $currentMonth = Carbon::now()->month;
         $currentYear = Carbon::now()->year;
@@ -191,6 +227,34 @@ class WalletController extends Controller
         $endOfLastYear = Carbon::now()->subYear()->endOfYear();
         $lastYearData = Wallet::whereBetween('rdate', [$startOfLastYear, $endOfLastYear])->where('record', 'expense')->get();
         $lastYear = $lastYearData->sum('amount');
+
+        $incomeData = Wallet::select(
+            'name',
+            DB::raw('SUM(amount) as total_income'),
+            DB::raw('COUNT(*) as income_count')
+        )
+            ->where('record', 'income')
+            ->groupBy('name')
+            ->get();
+
+        $expenseData = Wallet::select(
+            'name',
+            DB::raw('SUM(amount) as total_income'),
+            DB::raw('COUNT(*) as income_count')
+        )
+            ->where('record', 'expense')
+            ->groupBy('name')
+            ->get();
+
+        $incomeExpenseData = Wallet::select(
+            'name',
+            DB::raw('SUM(CASE WHEN record = "income" THEN amount ELSE 0 END) as total_income'),
+            DB::raw('SUM(CASE WHEN record = "expense" THEN amount ELSE 0 END) as total_expense'),
+            DB::raw('SUM(CASE WHEN record = "saving" THEN amount ELSE 0 END) as total_saving')
+        )
+            ->groupBy('name')
+            ->get();
+
         return view('backend.wallet.analytics', [
             'monthe' => $monthe,
             'lastMonthName' => $lastMonthName,
@@ -218,7 +282,47 @@ class WalletController extends Controller
 
             'thisyear' => $thisyear,
             'lastYear' => $lastYear,
+            'incomeData' => $incomeData,
+            'expenseData' => $expenseData,
+            'incomeExpenseData' => $incomeExpenseData,
         ]);
     }
 
+
+    // Record Page
+    public function recordPage()
+    {
+        return view('backend.wallet.record');
+    }
+
+    // Store Method
+    public function submitForm(Request $request)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'main_amount' => 'required|numeric',
+            'name.*' => 'required',
+            //            'amount.*' => 'required|numeric',
+            //            'due.*' => 'required|numeric',
+            //            'extra.*' => 'required|numeric',
+        ]);
+
+        // Create a new MainAmount instance
+        $mainAmount = Main_Amounts::create([
+            'main_amount' => $validatedData['main_amount']
+        ]);
+
+        // Create FormData instances for each submitted form data
+        foreach ($validatedData['name'] as $key => $name) {
+            Calculate_Amounts::create([
+                'main_amount_id' => $mainAmount->id,
+                'name' => $name,
+                'amount' => $validatedData['amount'][$key],
+                'due' => $validatedData['due'][$key],
+                'extra' => $validatedData['extra'][$key],
+            ]);
+        }
+
+        return response()->json(['message' => 'Form data saved successfully']);
+    }
 }

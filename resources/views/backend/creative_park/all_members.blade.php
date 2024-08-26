@@ -45,7 +45,6 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-        <button class="btn btn-primary btn-xs removeAll mb-3">Remove All Selected Data</button>
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
@@ -55,15 +54,16 @@
                             <div>Creative Park All Members <span class="badge bg-primary mx-1">{{ $total }}</span></div>
                             <div class="mx-4">Active <span class="badge bg-success mx-1">{{ $activeUser }}</span></div>
                             <div>Banned <span class="badge bg-danger mx-1">{{ $inactiveUser }}</span></div>
+                            <button style="margin-left: 80px;" class="btn btn-danger btn-xs removeAll">Remove All Selected Data</button>
                         </h6>
 
 {{--                        <div class="table-responsive">--}}
-                        <div class="">
-                            <table id="dataTableExample" class="table table-hover table-bordered">
+                        {{-- <div class="">
+                            <table id="dataTableExample" class="table table-hover">
                                 <thead>
                                 <tr class="bg-dark text-white-50 ">
+                                    <th><input type="checkbox" class="form-check-input" id="checkboxesMain"></th>
                                     <th>Sl</th>
-                                    <th><input type="checkbox" id="checkboxesMain"></th>
                                     <th>Image</th>
                                     <th>Student Id</th>
                                     <th>Student Name</th>
@@ -80,8 +80,8 @@
                                 @if($students->count())
                                     @foreach ($students as $key => $item)
                                         <tr id="tr_{{$item->id}}">
+                                            <td><input type="checkbox" class="checkbox form-check-input" data-id="{{$item->id}}"></td>
                                             <td>{{ $key+1 }}</td>
-                                            <td><input type="checkbox" class="checkbox" data-id="{{$item->id}}"></td>
                                             <td>
                                                 <img class="wd-100 rounded-circle" src="{{ (!empty($item->photo)) ? url('uploads/students_img/'.$item->photo) : url('uploads/no_image.jpg') }}" alt="profile">
                                             </td>
@@ -105,21 +105,9 @@
                                                     </span>
                                                 @endif
                                             <td>
-                                                {{--                                            @if(Auth::user()->can('admin.edit'))--}}
-                                                {{--                                                <a href="{{ route('cp.edit.students',$item->id) }}" class="btn btn-inverse-primary">View</a>--}}
-                                                {{--                                            @endif--}}
-                                                {{--                                            @if(Auth::user()->can('admin.edit'))--}}
-                                                {{--                                                <a href="{{ route('cp.edit.students',$item->id) }}" class="btn btn-inverse-warning">Edit</a>--}}
-                                                {{--                                            @endif--}}
-                                                {{--                                            @if(Auth::user()->can('admin.delete'))--}}
-                                                {{--                                                    <a href="{{ route('cp,delete.students',$item->id) }}" class="btn btn-inverse-danger" id="delete">Delete</a>--}}
-                                                {{--                                            @endif--}}
                                                 <div class="dropdown">
                                                     <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" class="btn" aria-haspopup="true" aria-expanded="false">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings icon-lg text-muted pb-3px">
-                                                            <circle cx="12" cy="12" r="3"></circle>
-                                                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal icon-lg text-muted pb-3px"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         @if(Auth::user()->can('admin.edit'))
@@ -168,7 +156,7 @@
                                 @endif
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
