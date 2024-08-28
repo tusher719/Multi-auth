@@ -20,7 +20,6 @@
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
                             <i data-feather="plus"></i> Add Record
-                            <h1>Hello world!</h1>
                         </button>
                         <!-- Modal -->
                         <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
