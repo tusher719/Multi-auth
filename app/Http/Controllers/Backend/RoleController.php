@@ -15,18 +15,21 @@ use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
     //
-    public function AllPermission(){
+    public function AllPermission()
+    {
         $permissions = Permission::all();
         return view('backend.pages.permissions.all_permissions', compact('permissions'));
     } // End Method
 
     // Add Permissions controller
-    public function AddPermission(){
+    public function AddPermission()
+    {
         return view('backend.pages.permissions.add_permissions');
     } // End Method
 
     // Store Permissions controller
-    public function StorePermission(Request $request){
+    public function StorePermission(Request $request)
+    {
         $permission = Permission::create([
             'name' => $request->name,
             'group_name' => $request->group_name,
@@ -42,16 +45,17 @@ class RoleController extends Controller
 
 
     // Edit Permission
-    public function editPermission($id){
+    public function editPermission($id)
+    {
 
         $permission = Permission::findOrFail($id);
         return view('backend.pages.permissions.edit_permissions', compact('permission'));
-
     } // End Method
 
 
     // Update Permissions controller
-    public function UpdatePermission(Request $request){
+    public function UpdatePermission(Request $request)
+    {
         $per_id = $request->id;
 
         Permission::FindOrFail($per_id)->update([
@@ -69,7 +73,8 @@ class RoleController extends Controller
 
 
     // Delete Permission
-    public function deletePermission($id){
+    public function deletePermission($id)
+    {
 
         Permission::findOrFail($id)->delete();
 
@@ -79,7 +84,6 @@ class RoleController extends Controller
         );
 
         return redirect()->back()->with($notification);
-
     }
 
 
@@ -87,17 +91,20 @@ class RoleController extends Controller
 
     // ================================||Import & Export Route||================================
 
-    public function ImportPermission(){
+    public function ImportPermission()
+    {
         return view('backend.pages.permissions.import_permissions');
     } // End Method
 
     // export Permissions
-    public function Export(){
+    public function Export()
+    {
         return Excel::download(new PermissionExport, 'permission.xlsx');
     } // End Method
 
 
-    public function Import(Request $request){
+    public function Import(Request $request)
+    {
         Excel::import(new PermissionImport, $request->file('import_file'));
 
         $notification = array(
@@ -115,20 +122,23 @@ class RoleController extends Controller
     // ================================||All Roles Route||================================
 
     // All Role
-    public function AllRoles(){
+    public function AllRoles()
+    {
         $role = Role::all();
         return view('backend.pages.roles.all_roles', compact('role'));
     } // End Method
 
 
     // Add Roles
-    public function AddRoles(){
+    public function AddRoles()
+    {
         return view('backend.pages.roles.add_roles');
     } // End Method
 
 
     // Store Roles
-    public function StoreRoles(Request $request){
+    public function StoreRoles(Request $request)
+    {
         Role::create([
             'name' => $request->name,
         ]);
@@ -143,15 +153,16 @@ class RoleController extends Controller
 
 
     // Edit Permission
-    public function EditRoles($id){
-        $roles= Role::findOrFail($id);
+    public function EditRoles($id)
+    {
+        $roles = Role::findOrFail($id);
         return view('backend.pages.roles.edit_roles', compact('roles'));
-
     } // End Method
 
 
     // Update Permissions controller
-    public function UpdateRoles(Request $request){
+    public function UpdateRoles(Request $request)
+    {
         $role_id = $request->id;
 
         Role::FindOrFail($role_id)->update([
@@ -169,7 +180,8 @@ class RoleController extends Controller
 
 
     // Delete Permission
-    public function DeleteRoles($id){
+    public function DeleteRoles($id)
+    {
 
         Role::findOrFail($id)->delete();
 
@@ -186,7 +198,8 @@ class RoleController extends Controller
 
     // ================================||Add Role Permission all Method||================================
     // All Roles Permission
-    public function AddRolesPermission() {
+    public function AddRolesPermission()
+    {
 
         $roles = Role::all();
         $permission = Permission::all();
@@ -197,7 +210,8 @@ class RoleController extends Controller
 
 
     //
-    public function RolePermissionStore(Request $request) {
+    public function RolePermissionStore(Request $request)
+    {
 
         $data = array();
         $permissions = $request->permission;
@@ -215,13 +229,13 @@ class RoleController extends Controller
         );
 
         return redirect()->route('all.roles.permission')->with($notification);
-
     } // End Method
 
 
 
     // All Roles Permission page view
-    public function AllRolesPermission() {
+    public function AllRolesPermission()
+    {
 
         $roles = Role::all();
         return view('backend.pages.role_setup.all_roles_permission', compact('roles'));
@@ -229,7 +243,8 @@ class RoleController extends Controller
 
 
     // Admin Edit Role Permissions
-    public function AdminEditRoles($id) {
+    public function AdminEditRoles($id)
+    {
         $role = Role::findOrFail($id);
         $permission = Permission::all();
         $permission_group = User::getPermissionGroups();
@@ -240,7 +255,8 @@ class RoleController extends Controller
 
 
     // Admin Role Permissions Update
-    public function AdminRolesUpdate(Request $request, $id) {
+    public function AdminRolesUpdate(Request $request, $id)
+    {
 
         $role = Role::findOrFail($id);
         $permissions = $request->permission;
@@ -255,12 +271,12 @@ class RoleController extends Controller
         );
 
         return redirect()->route('all.roles.permission')->with($notification);
-
     } // End Method
 
 
     // Admin Role Permissions Delete
-    public function AdminDeleteRoles($id) {
+    public function AdminDeleteRoles($id)
+    {
 
         $role = Role::findOrFail($id);
         if (!is_null($role)) {

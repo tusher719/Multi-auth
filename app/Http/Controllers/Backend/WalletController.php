@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\DB;
 class WalletController extends Controller
 {
     //
-    public function Wallet()
+    public function Wallet(Request $request)
     {
         $monthe     = date('F');
         $lastMonthName = date('F', strtotime('last month'));
-        $year       = date('Y');
+
         $lastYearName = date('Y', strtotime('-1 year'));
 
         $alldata    = Wallet::orderBy('rdate', 'desc')->get();
@@ -26,53 +26,99 @@ class WalletController extends Controller
         $expense    = DB::table('wallets')->where('record', 'expense')->sum('amount');
         $saving     = DB::table('wallets')->where('record', 'saving')->sum('amount');
         $total      = Wallet::sum('amount');
+        $totalMbrs  = Wallet::count();
 
         // Today
-        $today      = Carbon::today()->format('Y-m-d');
-        $todayIncome   = Wallet::where('rdate', $today)->where('record', 'income')->sum('amount');
+        $todayIncome = Wallet::whereDate('rdate', Carbon::today())
+            ->where('record', 'income')
+            ->sum('amount');
 
         // Yesterday
-        $yesterday = Carbon::yesterday()->format('Y-m-d');
-        $yesterdayIncome = Wallet::where('rdate', $yesterday)->where('record', 'income')->sum('amount');
+        $yesterdayIncome = Wallet::whereDate('rdate', Carbon::yesterday())
+            ->where('record', 'income')
+            ->sum('amount');
 
         // Last 7 Days
-        $sevenDaysAgo = now()->subDays(6)->format('Y-m-d');
-        $currentDate = now()->format('Y-m-d');
-        $lastSevenDaysData = Wallet::whereBetween('rdate', [$sevenDaysAgo, $currentDate])->where('record', 'income')->get();
-        $lastsevenday  = $lastSevenDaysData->sum('amount');
+        $sevenDaysAgo = now()->subDays(6); // No need to format
+        $currentDate = now();
+        $lastsevenday = Wallet::whereBetween('rdate', [$sevenDaysAgo, $currentDate])
+            ->where('record', 'income')
+            ->sum('amount');
 
         // Current Week
         $startOfWeek = Carbon::now()->startOfWeek(Carbon::SATURDAY);
         $endOfWeek = Carbon::now()->endOfWeek(Carbon::FRIDAY);
-        $thisWeekData = Wallet::whereBetween('rdate', [$startOfWeek, $endOfWeek])->where('record', 'income')->get();
-        $thisWeek = $thisWeekData->sum('amount');
-
-        //        $monthdata      = Wallet::whereMonth('rdate', Carbon::now())->where('record', 'expense')->get();
-
-        $currentMonth = Carbon::now()->month;
-        $currentYear = Carbon::now()->year;
+        $thisWeek = Wallet::whereBetween('rdate', [$startOfWeek, $endOfWeek])
+            ->where('record', 'income')
+            ->sum('amount');
 
         // Current Month
-        $monthData = Wallet::whereYear('rdate', $currentYear)->whereMonth('rdate', $currentMonth)->where('record', 'expense')->get();
-        $thismonth  = $monthData->sum('amount');
+        $thismonth = Wallet::whereYear('rdate', Carbon::now()->year)
+            ->whereMonth('rdate', Carbon::now()->month)
+            ->where('record', 'expense')
+            ->sum('amount');
 
         // Last Month
         $firstDayOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
         $lastDayOfLastMonth = Carbon::now()->subMonth()->endOfMonth();
-        $lastMonthData = Wallet::whereBetween('rdate', [$firstDayOfLastMonth, $lastDayOfLastMonth])->where('record', 'expense')->get();
-        $lastmonth   = $lastMonthData->sum('amount');
+        $lastmonth = Wallet::whereBetween('rdate', [$firstDayOfLastMonth, $lastDayOfLastMonth])
+            ->where('record', 'expense')
+            ->sum('amount');
 
         // Current Year
-        $yeardata      = Wallet::whereYear('rdate', Carbon::now()->year)->where('record', 'expense')->get();
-        $thisyear   = $yeardata->sum('amount');
+        $thisyear = Wallet::whereYear('rdate', Carbon::now()->year)
+            ->where('record', 'expense')
+            ->sum('amount');
 
         // Last Year
-        $startOfLastYear = Carbon::now()->subYear()->startOfYear();
-        $endOfLastYear = Carbon::now()->subYear()->endOfYear();
-        $lastYearData = Wallet::whereBetween('rdate', [$startOfLastYear, $endOfLastYear])->where('record', 'expense')->get();
-        $lastYear = $lastYearData->sum('amount');
+        $lastYear = Wallet::whereBetween('rdate', [Carbon::now()->subYear()->startOfYear(), Carbon::now()->subYear()->endOfYear()])
+            ->where('record', 'expense')
+            ->sum('amount');
+
+        if (!empty($request->year)) {
+            $year = $request->year;
+        } else {
+            $year = date('Y');
+        }
+
+        // Chart Data
+        $getTotalCustomerMonth = [];
+        $getTotalIncomeMonth = [];
+        $getTotalExpenseMonth = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $startDate = new \DateTime("$year-$month-01");
+            $endDate = new \DateTime("$year-$month-01");
+            $endDate->modify('last day of this month');
+
+            $start_date = $startDate->format('Y-m-d');
+            $end_date = $endDate->format('Y-m-d');
+
+            // Fetching data for the given month
+            $customerCount = Wallet::getTotalCustomerMonth($start_date, $end_date);
+
+            $customerIncome = Wallet::getTotalIncomeMonth($start_date, $end_date);
+
+            $customerExpense = Wallet::getTotalExpenseMonth($start_date, $end_date);
+
+            // Adding all data (customers, income, expense) for the current month
+            $getTotalCustomerMonth[] = [
+                'month' => $startDate->format('M'), // E.g., 'Jan', 'Feb'
+                'totalCustomers' => $customerCount,
+                'totalIncome' => $customerIncome,
+                'totalExpense' => $customerExpense,
+            ];
+        }
+
+
+
+        // Passing the data to the view
+        $data['getTotalCustomerMonth'] = $getTotalCustomerMonth;
+        // dd($data['getTotalCustomerMonth']);
+
 
         return view('backend.wallet.wallet', [
+            'data' => $data,
             'alldata' => $alldata,
 
             'monthe' => $monthe,
@@ -81,21 +127,16 @@ class WalletController extends Controller
             'lastYearName' => $lastYearName,
 
             'total' => $total,
-            'today' => $today,
+            'totalMbrs' => $totalMbrs,
+            // 'today' => $today,
             'todayIncome' => $todayIncome,
 
-            'yesterday' => $yesterday,
             'yesterdayIncome' => $yesterdayIncome,
 
-            'sevenDaysAgo' => $sevenDaysAgo,
-            'currentDate' => $currentDate,
             'lastsevenday' => $lastsevenday,
 
-            'startOfWeek' => $startOfWeek,
-            'endOfWeek' => $endOfWeek,
             'thisWeek' => $thisWeek,
 
-            'monthData' => $monthData,
             'thismonth' => $thismonth,
             'lastmonth' => $lastmonth,
 
