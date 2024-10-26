@@ -318,3 +318,144 @@
 .flex-3{
     background-color: var(--bs-modal-bg);
 }
+
+
+
+.datetimes {
+    background-color: #070d19;
+    position: sticky;
+    top: 60px;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 1fr 0.3fr 1fr 0.3fr 1fr 0.1fr;
+    grid-column-gap: 10px;
+    background: #fff;
+    padding: 10px 20px;
+}
+.div1 { grid-area: 1 / 1 / 2 / 2; }
+.div2 { grid-area: 1 / 2 / 2 / 3; }
+.div3 { grid-area: 1 / 3 / 2 / 4; }
+.div4 { grid-area: 1 / 4 / 2 / 5; }
+.div5 { grid-area: 1 / 5 / 2 / 6; }
+.div6 { grid-area: 1 / 6 / 2 / 7; }
+
+.name, .payment, .note, .record, .amount, .option {
+    padding: 5px 10px;
+    text-align: left;
+}
+
+.amount, .option {
+    text-align: right;
+}
+@media (max-width: 768px) {
+    .parent {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+
+
+
+
+/* form starting stylings ------------------------------- */
+.group {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.inputGgle {
+  font-size: 14px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  color: #fff;
+  background: transparent;
+  border-bottom: 1px solid #757575;
+}
+
+.inputGgle:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.labelGgle {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+}
+
+/* active state */
+.inputGgle.focused ~ .labelGgle,
+.inputGgle.filled ~ .labelGgle {
+  top: -20px;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+.inputGgle.focused ~ .bar:before,
+.inputGgle.focused ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+.inputGgle.focused ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+

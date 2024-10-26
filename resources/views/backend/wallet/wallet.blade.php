@@ -120,21 +120,19 @@
                                             <div class="flx-1 p-5 flex-fill" id="backgroundContainer"
                                                 style="background-color: darkorange">
                                                 <div class="select-cat mx-5">
-                                                    {{-- <select name="record" id="recordSelect"
-                                                        class="form-select form-select-lg">
-                                                        <option disabled>Select one</option>
-                                                        <option value="income">Income</option>
-                                                        <option value="expense">Expense</option>
-                                                        <option value="saving">Saving</option>
-                                                    </select> --}}
+
+                                                    <!-- Grid Buttons -->
                                                     <div class="grid-container">
-                                                        <button id="incomeBtn" class="grid-item"
+                                                        <button type="button" id="incomeBtn" class="grid-item"
                                                             data-value="income">Income</button>
-                                                        <button id="expenseBtn" class="grid-item"
+                                                        <button type="button" id="expenseBtn" class="grid-item"
                                                             data-value="expense">Expense</button>
-                                                        <button id="savingBtn" class="grid-item"
+                                                        <button type="button" id="savingBtn" class="grid-item"
                                                             data-value="saving">Saving</button>
                                                     </div>
+
+                                                    <!-- Hidden input to store the selected record value -->
+                                                    <input type="hidden" id="selectedRecord" name="record">
                                                 </div>
                                                 <div class="amount mx-5 pt-3">
                                                     <div class="custom-floating">
@@ -150,8 +148,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
 
                                             {{-- Flexblox Box-2 --}}
                                             <div class="flx-2 p-2 mt-5 flex-fill">
@@ -363,7 +359,7 @@
 
     @foreach ($alldata as $key => $item)
     @if($item->rdate != false)
-    <div class="px-7">
+    <div class="px-7 py-2 datetimes">
         <strong>{{ Carbon\Carbon::parse($item->rdate)->format('d-M-Y') }}</strong> -
 
 
@@ -415,33 +411,14 @@
     @endif
 
     <div class="main px-7">
-        <div class="single rounded bg-white text-dark px-5 py-3 mb-3 d-flex justify-content-between">
-            {{-- @if($item->status == 'active')--}}
-            {{-- <div class="border rounded-circle border-success text-success"><i style="height: 15px; width: 18px"
-                    data-feather="check"></i></div>--}}
-            {{-- @else--}}
-            {{-- <div class="border rounded-circle border-danger text-danger"><i data-feather="x"></i></div>--}}
-            {{-- @endif--}}
-            <div><strong>{{ $item->name }}</strong></div>
-            <div class="vr"></div>
-            <div>{{ $item->payment_type }}</div>
-            <div class="vr"></div>
+        <div class="single parent rounded text-dark ">
+            {{-- justify-content-between --}}
 
-            <div>{{ $item->note }}</div>
-            <div class="vr"></div>
-            <div>{{ $item->record }}</div>
-            <div class="vr"></div>
-            {{-- <div>{{ $item->rdate }}</div>--}}
-            {{-- <div>{{ $item->rtime->formate("h:i A") }}</div>--}}
-            <div>{{ Carbon\Carbon::parse($item->rdate)->format('d-M-Y') }}</div>
-            <div class="vr"></div>
-            <div>{{ Carbon\Carbon::parse($item->rtime)->format('h:i A') }}</div>
-            <div class="vr"></div>
-
-
-            {{-- {{ \Carbon\Carbon::now()->format("d/m/y h:i A") }}--}}
-
-            <div>
+            <div class="name"><strong>{{ $item->name }}</strong></div>
+            <div class="payment">{{ $item->payment_type }}</div>
+            <div class="note">{{ $item->note }}</div>
+            <div class="record">{{ $item->record }}</div>
+            <div class="amount">
                 @if($item->record == 'expense')
                 <strong class="text-danger tx-16 incomeAmount"><span>-BDT {{ number_format($item->amount,2)
                         }}</span></strong>
@@ -453,7 +430,7 @@
                         }}</span></strong>
                 @endif
             </div>
-            <div>
+            <div class="option">
                 {{-- <i data-feather="more-vertical"></i>--}}
 
                 <div class="dropdown">
@@ -726,7 +703,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Update Feather icons
             feather.replace();
-        }
+        };
+
 </script>
 
 @endsection

@@ -14,7 +14,6 @@
         </ol>
     </nav>
 
-
     <div class="all-data">
         <h1>ALL Filter Data</h1>
         <div class="row">
@@ -96,6 +95,155 @@
                         <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }} <br>
                         @endforeach
                     </div>
+
+
+
+                    <div class="col-md-12 mt-3">
+                        @foreach($expenseData as $data)
+                        <div class="expense-summary">
+                            {{-- <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }} --}}
+
+                            <!-- Button to toggle details -->
+                            <button class="btn btn-link" data-bs-toggle="collapse"
+                                data-bs-target="#details-{{ $loop->index }}">
+                                <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }}
+                            </button>
+
+                            <!-- Collapsible details section -->
+                            <div id="details-{{ $loop->index }}" class="collapse">
+                                @php
+                                // Fetch individual details for the current name
+                                $individualDetails = \App\Models\Wallet::where('record', 'expense')
+                                ->where('name', $data->name)
+                                ->get();
+                                @endphp
+
+                                <ul class="list-group mt-2">
+                                    @foreach($individualDetails as $detail)
+                                    <li class="list-group-item">
+                                        <strong>Date:</strong> {{ $detail->rdate }} <br>
+                                        <strong>Amount:</strong> {{ $detail->amount }} <br>
+                                        <strong>Payment Type:</strong> {{ $detail->record }} <br>
+                                        <strong>Note:</strong> {{ $detail->note }}
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        @endforeach
+                    </div>
+
+
+
+                    <div class="col-md-12 mt-3">
+                        @foreach($mergedData as $data)
+                        <div class="summary">
+
+                            <!-- Button to toggle details for income and expense -->
+                            <button class="btn btn-link" data-bs-toggle="collapse"
+                                data-bs-target="#details-{{ $loop->index }}">
+                                <b style="color: #fff;">{{ $data->name }}</b>
+                                
+                                {{-- <strong>Total Income:</strong> --}}
+                                <span class=" btn btn-success position-relative"
+                                    style="padding: 2px 10px; margin-left: 10px; margin-right: 10px">
+                                    {{ $data->total_income }}
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {{ $data->income_count }}
+                                    </span>
+                                </span>
+                                {{-- <strong>Total Expense:</strong> --}}
+                                <span class=" btn btn-danger position-relative" style="padding: 2px 10px;">
+                                    {{ $data->total_expense }}
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                        {{ $data->expense_count }}
+                                    </span>
+                                    <br>
+                            </button>
+
+                            <!-- Collapsible details section -->
+                            <div id="details-{{ $loop->index }}" class="collapse">
+                                <h6>Income Details:</h6>
+                                @php
+                                // Fetch individual income details for the current name
+                                $individualIncomeDetails = \App\Models\Wallet::where('record', 'income')
+                                ->where('name', $data->name)
+                                ->get();
+                                @endphp
+                                @php
+                                // Fetch individual expense details for the current name
+                                $individualExpenseDetails = \App\Models\Wallet::where('record', 'expense')
+                                ->where('name', $data->name)
+                                ->get();
+                                @endphp
+                                
+                                <ul class="list-group mt-2">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Payment Type</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach($individualIncomeDetails as $incomeDetail)
+                                        <tr>
+                                            <td>{{ $incomeDetail->rdate }}</td>
+                                            <td>{{ $incomeDetail->payment_type }}</td>
+                                            <td>{{ $incomeDetail->amount }}</td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: right">Total Amount:</td>
+                                            <td>{{ $data->total_income }}</td>
+                                        </tr>
+                                    </table>
+                                </ul>
+
+                                <h6>Expense Details:</h6>
+                                @php
+                                // Fetch individual expense details for the current name
+                                $individualExpenseDetails = \App\Models\Wallet::where('record', 'expense')
+                                ->where('name', $data->name)
+                                ->get();
+                                @endphp
+
+                                <ul class="list-group mt-2">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Payment Type</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach($individualExpenseDetails as $expenseDetail)
+                                        <tr>
+                                            <td>{{ $expenseDetail->rdate }}</td>
+                                            <td>{{ $expenseDetail->payment_type }}</td>
+                                            <td>{{ $expenseDetail->amount }}</td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: right">Total Amount:</td>
+                                            <td>
+                                                {{ $data->total_expense }}
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        @endforeach
+                    </div>
+
                     <div class="col-md-12 mt-3">
                         <table class="table">
                             <tr>
@@ -132,16 +280,11 @@
                             </tr>
                             @endforeach
                         </table>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <h1>Financial Summary</h1>
     <?php

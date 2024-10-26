@@ -108,6 +108,13 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/students/inactive/{id}', 'InactiveStudent')->name('cp.inactive.students');
         Route::get('/students/active/{id}', 'ActiveStudent')->name('cp.active.students');
 
+        // Ajax data query
+        Route::get('/get-student-details', 'getStudentDetails');
+
+
+
+
+
         // Import & Export Route
         Route::get('/creative-park/import/cp_students', 'ImportStudents')->name('import.students');
         Route::get('/creative-park/export/student', 'ExportStudent')->name('export.student');

@@ -15,23 +15,51 @@ use Maatwebsite\Excel\Facades\Excel;
 class CpController extends Controller
 {
     //
-    public function AllMembers() {
+    public function AllMembers()
+    {
         $total          = Creative_park::count();
         $activeUser     = Creative_park::where('status', 'active')->count();
         $inactiveUser   = Creative_park::where('status', 'inactive')->count();
         $students       = Creative_park::all();
-        return view('backend.creative_park.all_members', compact('total','activeUser','inactiveUser','students'));
+        return view('backend.creative_park.all_members', compact('total', 'activeUser', 'inactiveUser', 'students'));
     }
 
+
+
+    // Ajax Data showing
+    public function getStudentDetails(Request $request)
+    {
+        $student = Creative_park::where('student_id', $request->student_id)->first();
+
+        if ($student) {
+            // Returning JSON response
+            return response()->json($student);
+        } else {
+            // If no student is found, return an empty response or an error message
+            return response()->json(['error' => 'Student not found'], 404);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     // Add Members
-    public function AddMember() {
+    public function AddMember()
+    {
         $tags = Tag::all();
         return view('backend.creative_park.add_members', compact('tags'));
     }
 
     // Members Added Controller
-    public function StoreMembers(Request $request) {
-//        $auth_id->$id;
+    public function StoreMembers(Request $request)
+    {
+        //        $auth_id->$id;
         $data = new Creative_park();
         $data->auth_id      = Auth::user()->id;
         $data->student_id   = $request->student_id;
@@ -44,18 +72,18 @@ class CpController extends Controller
         $data->gender       = $request->gender;
         $data->date         = $request->dob;
         $data->blood        = $request->blood;
-        $data->status        = $request->status == true ? 'active':'inactive';
+        $data->status        = $request->status == true ? 'active' : 'inactive';
 
-        if($request->file('photo')){
+        if ($request->file('photo')) {
             $file = $request->file('photo');
-//            @unlink(public_path('uploads/students_img/'.$data->photo));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('uploads/students_img'),$filename);
+            //            @unlink(public_path('uploads/students_img/'.$data->photo));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('uploads/students_img'), $filename);
             $data['photo'] = $filename;
         }
         $data->save();
 
-        if($request->has('tags')){
+        if ($request->has('tags')) {
             $data->tags()->attach($request->tags);
         }
 
@@ -64,25 +92,27 @@ class CpController extends Controller
             'alert-type'    => 'success',
         );
         return redirect()->route('all.cp.members')->with($notification);
-
     } // End Method
 
     // Edit Method
-    public function ViewDetails($id) {
-//        $user = User::findOrFail($id);
+    public function ViewDetails($id)
+    {
+        //        $user = User::findOrFail($id);
         $details = Creative_park::findOrFail($id);
         return view('backend.creative_park.view_members', compact('details'));
     }
 
     // Edit Method
-    public function EditMembers($id) {
-        $info= Creative_park::findOrFail($id);
+    public function EditMembers($id)
+    {
+        $info = Creative_park::findOrFail($id);
         $tags = Tag::all();
-        return view('backend.creative_park.edit_members', compact('info','tags'));
+        return view('backend.creative_park.edit_members', compact('info', 'tags'));
     }
 
     // Update Method
-    public function UpdateMembers(Request $request, $id) {
+    public function UpdateMembers(Request $request, $id)
+    {
         $data = Creative_park::where('id', $id)->first();
 
         $data->student_id   = $request->student_id;
@@ -95,13 +125,13 @@ class CpController extends Controller
         $data->gender       = $request->gender;
         $data->date         = $request->dob;
         $data->blood        = $request->blood;
-        $data->status        = $request->status == true ? 'active':'inactive';
+        $data->status        = $request->status == true ? 'active' : 'inactive';
 
-        if($request->file('photo')){
+        if ($request->file('photo')) {
             $file = $request->file('photo');
-            @unlink(public_path('uploads/students_img/'.$data->photo));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('uploads/students_img'),$filename);
+            @unlink(public_path('uploads/students_img/' . $data->photo));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('uploads/students_img'), $filename);
             $data['photo'] = $filename;
         }
         $data->save();
@@ -119,12 +149,13 @@ class CpController extends Controller
 
 
     // Delete Method
-    public function DeleteStudent($id) {
+    public function DeleteStudent($id)
+    {
 
         $data = Creative_park::find($id);
 
         if (!is_null($data->photo)) {
-            $img_path = public_path('uploads/students_img/'.$data->photo);
+            $img_path = public_path('uploads/students_img/' . $data->photo);
             unlink($img_path);
         }
 
@@ -142,14 +173,14 @@ class CpController extends Controller
     public function MultiDelete(Request $request)
     {
         $ids = $request->ids;
-        Creative_park::whereIn('id',explode(",",$ids))->delete();
-        return response()->json(['status'=>true,'message'=>"User successfully removed."]);
-
+        Creative_park::whereIn('id', explode(",", $ids))->delete();
+        return response()->json(['status' => true, 'message' => "User successfully removed."]);
     }
 
 
     // Product Active Inactive
-    public function InactiveStudent($id) {
+    public function InactiveStudent($id)
+    {
         Creative_park::findOrFail($id)->update(['status' => 'inactive']);
 
         $notification = array(
@@ -159,7 +190,8 @@ class CpController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function ActiveStudent($id) {
+    public function ActiveStudent($id)
+    {
         Creative_park::findOrFail($id)->update(['status' => 'active']);
         $notification = array(
             'message'       => 'User Active',
@@ -170,19 +202,22 @@ class CpController extends Controller
 
 
     // Clone Student Method
-    public function CloneMembers($id) {
-        $info= Creative_park::findOrFail($id);
+    public function CloneMembers($id)
+    {
+        $info = Creative_park::findOrFail($id);
         return view('backend.creative_park.clone_members', compact('info'));
     } // End Method
 
 
 
     // File Import Method
-    public function ImportStudents() {
+    public function ImportStudents()
+    {
         return view('backend.creative_park.import_students');
     } // End Method
 
-    public function ImportStudent(Request $request) {
+    public function ImportStudent(Request $request)
+    {
         Excel::import(new StudentsImport, $request->file('import_file'));
         $notification = array(
             'message'       => 'Students Imported Successfully',
@@ -192,9 +227,8 @@ class CpController extends Controller
     } // End Method
 
     // File Export Permissions Method
-    public function ExportStudent(){
+    public function ExportStudent()
+    {
         return Excel::download(new StudentExport, 'cp_students.xlsx');
     } // End Method
 }
-
-

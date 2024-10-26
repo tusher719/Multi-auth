@@ -287,6 +287,17 @@ class WalletController extends Controller
             ->groupBy('name')
             ->get();
 
+        $mergedData = Wallet::select(
+            'name',
+            DB::raw('SUM(CASE WHEN record = "income" THEN amount ELSE 0 END) as total_income'),
+            DB::raw('COUNT(CASE WHEN record = "income" THEN 1 ELSE NULL END) as income_count'),
+            DB::raw('SUM(CASE WHEN record = "expense" THEN amount ELSE 0 END) as total_expense'),
+            DB::raw('COUNT(CASE WHEN record = "expense" THEN 1 ELSE NULL END) as expense_count')
+        )
+            ->groupBy('name')
+            ->get();
+
+
         $incomeExpenseData = Wallet::select(
             'name',
             DB::raw('SUM(CASE WHEN record = "income" THEN amount ELSE 0 END) as total_income'),
@@ -325,6 +336,7 @@ class WalletController extends Controller
             'lastYear' => $lastYear,
             'incomeData' => $incomeData,
             'expenseData' => $expenseData,
+            'mergedData' => $mergedData,
             'incomeExpenseData' => $incomeExpenseData,
         ]);
     }
