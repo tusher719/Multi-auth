@@ -132,7 +132,9 @@ class CpController extends Controller
     {
         //        $user = User::findOrFail($id);
         $details = Creative_park::findOrFail($id);
-        return view('backend.creative_park.view_members', compact('details'));
+        $panels = Panel::all();
+        $all_students = Creative_park::whereNotNull('panel_id')->get();
+        return view('backend.creative_park.view_members', compact('details', 'panels', 'all_students'));
     }
 
     // Edit Method

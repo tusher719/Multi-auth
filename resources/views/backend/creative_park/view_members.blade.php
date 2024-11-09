@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9 grid-margin stretch-card">
+        <div class="col-md-8 grid-margin stretch-card">
 
             <div class="card">
                 <div class="card-body">
@@ -144,6 +144,55 @@
 
 
 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Creative Park Panel</h6>
+
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Student Name(s)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($panels as $panel)
+                            {{-- Check if there are any students associated with the current panel --}}
+                            @php
+                            $matchingStudents = $all_students->filter(function($student) use ($panel) {
+                            return $student->panel_id == $panel->id;
+                            });
+                            @endphp
+
+                            @if ($matchingStudents->isNotEmpty())
+                            {{-- Display the panel name and student names if there are matching students --}}
+                            @foreach ($matchingStudents as $student)
+                            <tr>
+                                <td>{{ $panel->position }}</td> {{-- Panel position --}}
+                                <td>{{ $student->name }}</td> {{-- Student name --}}
+                            </tr>
+                            @endforeach
+                            @else
+                            {{-- If no students match this panel, display the panel name with "--" --}}
+                            <tr>
+                                <td>{{ $panel->position }}</td> {{-- Panel position --}}
+                                <td>--</td> {{-- Placeholder for no students --}}
+                            </tr>
+                            @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+                    {{-- <option value="{{ $item->id }}">{{ $item->position }}</option> --}}
                 </div>
             </div>
         </div>
