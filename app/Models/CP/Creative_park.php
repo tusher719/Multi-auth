@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Creative_park extends Model
 {
     use HasFactory;
-//    protected $guarded = [];
+    //    protected $guarded = [];
     protected $fillable = [
         'auth_id',
         'student_id',
@@ -29,11 +29,18 @@ class Creative_park extends Model
     ];
 
 
-    public function user(){
-        return $this->belongsTo(User::class,'auth_id','id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'auth_id', 'id');
     }
 
-    public function tags() {
+    public function tags()
+    {
         return $this->belongsToMany(Tag::class)->as('tags');
+    }
+
+    public function panel()
+    {
+        return $this->belongsTo(Panel::class, 'panel_id', 'id');
     }
 }

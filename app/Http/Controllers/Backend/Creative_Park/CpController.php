@@ -6,6 +6,7 @@ use App\Exports\StudentExport;
 use App\Http\Controllers\Controller;
 use App\Imports\StudentsImport;
 use App\Models\CP\Creative_park;
+use App\Models\CP\Panel;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,37 +30,69 @@ class CpController extends Controller
     // Ajax Data showing
     public function getStudentDetails(Request $request)
     {
-        $student = Creative_park::where('student_id', $request->student_id)->first();
+        try {
+            // Validate request
+            $request->validate([
+                'student_id' => 'required|string|max:50'
+            ]);
 
-        if ($student) {
-            // Returning JSON response
+            $student = Creative_park::where('student_id', $request->student_id)
+                ->select([
+                    'id',
+                    'student_id',
+                    'name',
+                    'email',
+                    'phone',
+                    'phone_2',
+                    'batch',
+                    'section',
+                    'gender',
+                    'date',
+                    'blood',
+                    'photo'
+                ])
+                ->first();
+
+            if (!$student) {
+                return response()->json([
+                    'error' => 'Student not found',
+                    'message' => 'No student found with the provided ID'
+                ], 404);
+            }
+
             return response()->json($student);
-        } else {
-            // If no student is found, return an empty response or an error message
-            return response()->json(['error' => 'Student not found'], 404);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'error' => 'Validation error',
+                'message' => $e->errors()
+            ], 422);
+        } catch (Exception $e) {
+            Log::error('Error fetching student details: ' . $e->getMessage(), [
+                'student_id' => $request->student_id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return response()->json([
+                'error' => 'Server error',
+                'message' => 'An unexpected error occurred. Please try again later.'
+            ], 500);
         }
     }
-
-
-
-
-
-
-
-
 
 
     // Add Members
     public function AddMember()
     {
         $tags = Tag::all();
-        return view('backend.creative_park.add_members', compact('tags'));
+        $panel = Panel::all();
+        return view('backend.creative_park.add_members', compact('tags', 'panel'));
     }
+
 
     // Members Added Controller
     public function StoreMembers(Request $request)
     {
-        //        $auth_id->$id;
         $data = new Creative_park();
         $data->auth_id      = Auth::user()->id;
         $data->student_id   = $request->student_id;
@@ -72,11 +105,11 @@ class CpController extends Controller
         $data->gender       = $request->gender;
         $data->date         = $request->dob;
         $data->blood        = $request->blood;
+        $data->panel_id     = $request->panel_position;
         $data->status        = $request->status == true ? 'active' : 'inactive';
 
         if ($request->file('photo')) {
             $file = $request->file('photo');
-            //            @unlink(public_path('uploads/students_img/'.$data->photo));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('uploads/students_img'), $filename);
             $data['photo'] = $filename;
@@ -94,7 +127,7 @@ class CpController extends Controller
         return redirect()->route('all.cp.members')->with($notification);
     } // End Method
 
-    // Edit Method
+    // View Method
     public function ViewDetails($id)
     {
         //        $user = User::findOrFail($id);
@@ -107,7 +140,8 @@ class CpController extends Controller
     {
         $info = Creative_park::findOrFail($id);
         $tags = Tag::all();
-        return view('backend.creative_park.edit_members', compact('info', 'tags'));
+        $panel = Panel::all();
+        return view('backend.creative_park.edit_members', compact('info', 'tags', 'panel'));
     }
 
     // Update Method
@@ -125,6 +159,7 @@ class CpController extends Controller
         $data->gender       = $request->gender;
         $data->date         = $request->dob;
         $data->blood        = $request->blood;
+        $data->panel_id     = $request->panel_position;
         $data->status        = $request->status == true ? 'active' : 'inactive';
 
         if ($request->file('photo')) {

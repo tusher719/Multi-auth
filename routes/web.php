@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\Creative_Park\CpController;
+use App\Http\Controllers\Backend\Creative_Park\PanelController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TodosController;
 use App\Http\Controllers\Backend\WalletController;
@@ -108,8 +109,11 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/students/inactive/{id}', 'InactiveStudent')->name('cp.inactive.students');
         Route::get('/students/active/{id}', 'ActiveStudent')->name('cp.active.students');
 
-        // Ajax data query
-        Route::get('/get-student-details', 'getStudentDetails');
+        // routes/web.php
+        Route::get('/get-student-details', 'getStudentDetails')->name('student.details');
+
+
+
 
 
 
@@ -119,6 +123,18 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/creative-park/import/cp_students', 'ImportStudents')->name('import.students');
         Route::get('/creative-park/export/student', 'ExportStudent')->name('export.student');
         Route::post('/creative-park/import/student', 'ImportStudent')->name('import.student');
+    });
+
+    // Creative Park All Route
+    Route::controller(PanelController::class)->group(function () {
+        Route::get('/creative-park/panel/all/panel', 'AllPanel')->name('all.panel')->middleware('permission:admin.all');
+        // Route::post('/creative-park/panel/all/position/store', 'StorePanel')->name('store.panel');
+
+
+        Route::post('creative-park/panel/store', 'StorePanel')->name('store.panel');
+        Route::get('creative-park/panel/edit/{id}', 'editPanel');
+        Route::put('creative-park/panel/update', 'updatePanel')->name('update.panel');
+        Route::delete('creative-park/panel/delete/{id}', 'deletePanel')->name('delete.panel');
     });
 
     // Tag All Route
