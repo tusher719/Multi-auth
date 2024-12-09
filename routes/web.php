@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Creative_Park\PanelController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TodosController;
 use App\Http\Controllers\Backend\WalletController;
+use App\Models\RecordCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,6 +158,12 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/wallet/analytics', 'ShowPieChart')->name('wallet.analytics');
         Route::get('/wallet/record', 'recordPage')->name('wallet.record');
         Route::post('/wallet/record/submit-form', 'SumitForm')->name('submit.form');
+    });
+
+    // Wallet AddMore routes
+    Route::controller(WalletController::class)->group(function () {
+        Route::get('/wallet/record/add-more', 'AddMore')->name('add.more');
+        Route::post('/wallet/record/add-store', 'AddMoreStore')->name('add-more.store');
     });
 
     // Tag All Route

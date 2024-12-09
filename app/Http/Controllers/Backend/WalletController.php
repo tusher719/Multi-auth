@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Calculate_Amounts;
 use App\Models\Main_Amounts;
+use App\Models\RecordCategory;
 use App\Models\Wallet;
 use App\Models\WalletHistory;
 use Carbon\Carbon;
@@ -16,6 +17,9 @@ class WalletController extends Controller
     //
     public function Wallet(Request $request)
     {
+        $dynamicData = Wallet::select('name',)
+            ->groupBy('name')
+            ->get();
         $monthe     = date('F');
         $lastMonthName = date('F', strtotime('last month'));
 
@@ -32,10 +36,16 @@ class WalletController extends Controller
         $todayIncome = Wallet::whereDate('rdate', Carbon::today())
             ->where('record', 'income')
             ->sum('amount');
+        $todayExp = Wallet::whereDate('rdate', Carbon::today())
+            ->where('record', 'expense')
+            ->sum('amount');
 
         // Yesterday
         $yesterdayIncome = Wallet::whereDate('rdate', Carbon::yesterday())
             ->where('record', 'income')
+            ->sum('amount');
+        $yesterdayExp = Wallet::whereDate('rdate', Carbon::yesterday())
+            ->where('record', 'expense')
             ->sum('amount');
 
         // Last 7 Days
@@ -44,6 +54,9 @@ class WalletController extends Controller
         $lastsevenday = Wallet::whereBetween('rdate', [$sevenDaysAgo, $currentDate])
             ->where('record', 'income')
             ->sum('amount');
+        $lastsevendayExp = Wallet::whereBetween('rdate', [$sevenDaysAgo, $currentDate])
+            ->where('record', 'expense')
+            ->sum('amount');
 
         // Current Week
         $startOfWeek = Carbon::now()->startOfWeek(Carbon::SATURDAY);
@@ -51,9 +64,16 @@ class WalletController extends Controller
         $thisWeek = Wallet::whereBetween('rdate', [$startOfWeek, $endOfWeek])
             ->where('record', 'income')
             ->sum('amount');
+        $thisWeekExp = Wallet::whereBetween('rdate', [$startOfWeek, $endOfWeek])
+            ->where('record', 'expense')
+            ->sum('amount');
 
         // Current Month
         $thismonth = Wallet::whereYear('rdate', Carbon::now()->year)
+            ->whereMonth('rdate', Carbon::now()->month)
+            ->where('record', 'income')
+            ->sum('amount');
+        $thismonthExp = Wallet::whereYear('rdate', Carbon::now()->year)
             ->whereMonth('rdate', Carbon::now()->month)
             ->where('record', 'expense')
             ->sum('amount');
@@ -62,16 +82,25 @@ class WalletController extends Controller
         $firstDayOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
         $lastDayOfLastMonth = Carbon::now()->subMonth()->endOfMonth();
         $lastmonth = Wallet::whereBetween('rdate', [$firstDayOfLastMonth, $lastDayOfLastMonth])
+            ->where('record', 'income')
+            ->sum('amount');
+        $lastmonthExp = Wallet::whereBetween('rdate', [$firstDayOfLastMonth, $lastDayOfLastMonth])
             ->where('record', 'expense')
             ->sum('amount');
 
         // Current Year
         $thisyear = Wallet::whereYear('rdate', Carbon::now()->year)
+            ->where('record', 'income')
+            ->sum('amount');
+        $thisyearExp = Wallet::whereYear('rdate', Carbon::now()->year)
             ->where('record', 'expense')
             ->sum('amount');
 
         // Last Year
         $lastYear = Wallet::whereBetween('rdate', [Carbon::now()->subYear()->startOfYear(), Carbon::now()->subYear()->endOfYear()])
+            ->where('record', 'income')
+            ->sum('amount');
+        $lastYearExp = Wallet::whereBetween('rdate', [Carbon::now()->subYear()->startOfYear(), Carbon::now()->subYear()->endOfYear()])
             ->where('record', 'expense')
             ->sum('amount');
 
@@ -118,6 +147,7 @@ class WalletController extends Controller
 
 
         return view('backend.wallet.wallet', [
+            'dynamicData' => $dynamicData,
             'data' => $data,
             'alldata' => $alldata,
 
@@ -130,18 +160,27 @@ class WalletController extends Controller
             'totalMbrs' => $totalMbrs,
             // 'today' => $today,
             'todayIncome' => $todayIncome,
+            'todayExp' => $todayExp,
 
             'yesterdayIncome' => $yesterdayIncome,
+            'yesterdayExp' => $yesterdayExp,
 
             'lastsevenday' => $lastsevenday,
+            'lastsevendayExp' => $lastsevendayExp,
 
             'thisWeek' => $thisWeek,
+            'thisWeekExp' => $thisWeekExp,
 
             'thismonth' => $thismonth,
+            'thismonthExp' => $thismonthExp,
+
             'lastmonth' => $lastmonth,
+            'lastmonthExp' => $lastmonthExp,
 
             'thisyear' => $thisyear,
+            'thisyearExp' => $thisyearExp,
             'lastYear' => $lastYear,
+            'lastYearExp' => $lastYearExp,
 
             'income' => $income,
             'expense' => $expense,
@@ -377,5 +416,59 @@ class WalletController extends Controller
         }
 
         return response()->json(['message' => 'Form data saved successfully']);
+    }
+
+    // Wallet Record
+    public function AddMore()
+    {
+        $records = RecordCategory::with('stocks')->get();
+        return view('backend.wallet.addMore', compact('records'));
+    }
+
+    // Record AddMore Storage
+    public function AddMoreStore(Request $request)
+    {
+        // dd($request->all());
+        // $rules = ['name' => 'required', 'stocks.*' => 'required'];
+        // foreach ($request->stocks as $key => $value) {
+        //     $rules["stocks.{$key}.quantity"] = 'required';
+        //     $rules["stocks.{$key}.price"] = 'required';
+        // }
+        // $request->validate($rules);
+        // $product = RecordCategory::create(['name' => $request->name]);
+        // foreach ($request->stocks as $key => $value) {
+        //     $product->stocks()->create($value);
+        // }
+
+
+        $rules = ['name' => 'required', 'stocks' => 'required|array',];
+
+        $messages = ['name.required' => 'The product name is required.', 'stocks.required' => 'At least one stock entry is required.',];
+
+        foreach ($request->stocks as $key => $value) {
+            $rules["stocks.$key.quantity"] = 'required';
+            $rules["stocks.$key.price"] = 'required|numeric';
+
+            // Customizing messages for each stock item
+            $messages["stocks.$key.quantity.required"] = "The quantity is required for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.quantity.numeric"] = "The quantity must be a number for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.price.required"] = "The price is required for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.price.numeric"] = "The price must be a number for Stock #" . ($key + 1) . ".";
+        }
+
+        $request->validate($rules, $messages);
+
+        // Proceed with saving the data
+        $product = RecordCategory::create(['name' => $request->name]);
+        foreach ($request->stocks as $stock) {
+            $product->stocks()->create($stock);
+        }
+
+        // Notifications
+        $notification = array(
+            'message'       => 'New Record Added Successfully!',
+            'alert-type'    => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }

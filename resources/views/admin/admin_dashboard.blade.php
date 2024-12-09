@@ -109,6 +109,7 @@ Contact: tusher10823@gmail.com
     <script src="{{ asset('backend') }}/assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="{{ asset('backend') }}/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
     <script src="{{ asset('backend') }}/assets/js/data-table.js"></script>
+    <script src="{{ asset('backend') }}/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <script src="{{ asset('backend') }}/assets/js/validate.min.js"></script>
     <script src="{{ asset('backend') }}/assets/vendors/select2/select2.min.js"></script>
     <!-- Plugin js for this page -->

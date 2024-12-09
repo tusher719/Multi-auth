@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CHlkJLVxsGyRraGV',
+            '_route' => 'generated::Eednx0gm54A3TGfB',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::4gtpscqHJDrMTlHn',
+            '_route' => 'generated::3lW45HwxScVqMkdd',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::byDDZN0BQXuJZCDN',
+            '_route' => 'generated::PBSVbLAKPysOMAvb',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::eV9MThLReY1h2YHH',
+            '_route' => 'generated::dMojkHlPJQMkTIBg',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::22pDWsgTRaMCr709',
+            '_route' => 'generated::0RZKUewZTt2tByPA',
           ),
           1 => NULL,
           2 => 
@@ -1270,6 +1270,45 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/wallet/record/add-more' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'add.more',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/wallet/record/add-store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'add-more.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/todos/all' => 
       array (
         0 => 
@@ -1751,7 +1790,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0QrIH8L6mtI7UkHi',
+            '_route' => 'generated::Z5eemTcpbFCn6sBV',
           ),
           1 => 
           array (
@@ -2201,7 +2240,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CHlkJLVxsGyRraGV' => 
+    'generated::Eednx0gm54A3TGfB' => 
     array (
       'methods' => 
       array (
@@ -2224,7 +2263,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CHlkJLVxsGyRraGV',
+        'as' => 'generated::Eednx0gm54A3TGfB',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2240,7 +2279,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::4gtpscqHJDrMTlHn' => 
+    'generated::3lW45HwxScVqMkdd' => 
     array (
       'methods' => 
       array (
@@ -2262,7 +2301,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::4gtpscqHJDrMTlHn',
+        'as' => 'generated::3lW45HwxScVqMkdd',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2468,7 +2507,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::byDDZN0BQXuJZCDN' => 
+    'generated::PBSVbLAKPysOMAvb' => 
     array (
       'methods' => 
       array (
@@ -2489,7 +2528,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::byDDZN0BQXuJZCDN',
+        'as' => 'generated::PBSVbLAKPysOMAvb',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2543,7 +2582,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::eV9MThLReY1h2YHH' => 
+    'generated::dMojkHlPJQMkTIBg' => 
     array (
       'methods' => 
       array (
@@ -2564,7 +2603,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::eV9MThLReY1h2YHH',
+        'as' => 'generated::dMojkHlPJQMkTIBg',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2884,7 +2923,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::22pDWsgTRaMCr709' => 
+    'generated::0RZKUewZTt2tByPA' => 
     array (
       'methods' => 
       array (
@@ -2905,7 +2944,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::22pDWsgTRaMCr709',
+        'as' => 'generated::0RZKUewZTt2tByPA',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4936,7 +4975,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0QrIH8L6mtI7UkHi' => 
+    'generated::Z5eemTcpbFCn6sBV' => 
     array (
       'methods' => 
       array (
@@ -4959,7 +4998,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0QrIH8L6mtI7UkHi',
+        'as' => 'generated::Z5eemTcpbFCn6sBV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5577,6 +5616,83 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'submit.form',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'add.more' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet/record/add-more',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@AddMore',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@AddMore',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'add.more',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'add-more.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'wallet/record/add-store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@AddMoreStore',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@AddMoreStore',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'add-more.store',
       ),
       'fallback' => false,
       'defaults' => 

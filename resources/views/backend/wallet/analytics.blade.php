@@ -22,59 +22,55 @@
                 <div class="row">
 
                     <div class="col-md-4">
-                        <div class="alert alert-success" role="alert">
-                            <h4 class="alert-heading mb-1 tx-16">{{ number_format($total,2) }}</h4>
+                        <div class="alert alert-success d-flex justify-content-between" role="alert">
                             <p>Total</p>
+                            <h4 class="alert-heading mb-1 tx-16">{{ number_format($total,2) }}</h4>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-info" role="alert">
-                            <div class="d-flex">
-                                <h4 class="alert-heading px-1 mb-1 tx-16">{{ number_format($todayIncome,2) }}</h4>
-                            </div>
+                        <div class="alert alert-info d-flex justify-content-between" role="alert">
+                            <h4 class="alert-heading px-1 mb-1 tx-16">{{ number_format($todayIncome,2) }}</h4>
                             <p>Today</p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-secondary" role="alert">
-                            <div class="d-flex">
-                                <h4 class="alert-heading px-1 mb-1 tx-16">{{ number_format($yesterdayIncome,2) }}</h4>
-                            </div>
+                        <div class="alert alert-secondary d-flex justify-content-between" role="alert">
+                            <h4 class="alert-heading px-1 mb-1 tx-16">{{ number_format($yesterdayIncome,2) }}</h4>
                             <p>Yesterday </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-info" role="alert">
+                        <div class="alert alert-info d-flex justify-content-between" role="alert">
                             <h4 class="alert-heading mb-1 tx-16">{{ number_format($lastsevenday,2) }}</h4>
                             <p>Last 7 days </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-info" role="alert">
+                        <div class="alert alert-info d-flex justify-content-between" role="alert">
                             <h4 class="alert-heading mb-1 tx-16">{{ number_format($thisWeek,2) }}</h4>
                             <p>This Week </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-info" role="alert">
+                        <div class="alert alert-info d-flex justify-content-between" role="alert">
                             <h4 class="alert-heading mb-1 tx-16">{{ number_format($thismonth,2) }}</h4>
                             <p>This Month </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-secondary" role="alert">
+                        <div class="alert alert-secondary d-flex justify-content-between" role="alert">
                             <h4 class="alert-heading mb-1 tx-16">{{ number_format($lastmonth,2) }}</h4>
                             <p>Last Month </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-info" role="alert">
+                        <div class="alert alert-info d-flex justify-content-between" role="alert">
                             <h4 class="alert-heading mb-1 tx-16">{{ number_format($thisyear,2) }}</h4>
                             <p>This Year </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="alert alert-secondary" role="alert">
+                        <div class="alert alert-secondary d-flex justify-content-between" role="alert">
                             <h4 class="alert-heading mb-1 tx-16">{{ number_format($lastYear,2) }}</h4>
                             <p>Last Year </p>
                         </div>
@@ -92,17 +88,17 @@
                         @foreach($incomeExpenseData as $data)
                         <tr>
                             <th>{{ $data->name }}</th>
-                            <td class="text-danger">{{ $data->total_income }}</td>
+                            <td class="text-danger">{{ number_format($data->total_income) }}</td>
                             <td class="text-warning">
                                 @if(!$data->total_expense == 0)
-                                {{ $data->total_expense }}
+                                {{ number_format($data->total_expense) }}
                                 @else
                                 --
                                 @endif
                             </td>
                             <td class="text-success">
                                 @if($data->total_expense - $data->total_income )
-                                {{ $data->total_expense - $data->total_income }}
+                                {{ number_format($data->total_expense - $data->total_income) }}
                                 @else
                                 --
                                 @endif
@@ -124,14 +120,16 @@
                     <div class="col-md-6">
                         <h4 class="mb-2">Income</h4>
                         @foreach($incomeData as $data)
-                        <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }} <br>
+                        <b>{{ $data->name }}</b> - {{ number_format($data->total_income) }} - {{ $data->income_count }}
+                        <br>
                         @endforeach
                     </div>
                     <div class="col-md-6">
 
                         <h4 class="mb-2">Expense</h4>
                         @foreach($expenseData as $data)
-                        <b>{{ $data->name }}</b> - {{ $data->total_income }} - {{ $data->income_count }} <br>
+                        <b>{{ $data->name }}</b> - {{ number_format($data->total_income) }} - {{ $data->income_count }}
+                        <br>
                         @endforeach
                     </div>
 
@@ -148,7 +146,7 @@
                                             <span><b style="color: #fff;">{{ $data->name }}</b></span>
                                             <span class=" btn border-success text-success position-relative"
                                                 style="padding: 0px 10px; margin-left: 10px; margin-right: 10px">
-                                                {{ $data->total_income }}
+                                                {{ number_format($data->total_income) }}
                                                 <span
                                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                                     {{ $data->income_count }}
@@ -156,7 +154,7 @@
                                             </span>
                                             <span class=" btn border-danger text-danger position-relative"
                                                 style="padding: 0px 10px;">
-                                                {{ $data->total_expense }}
+                                                {{ number_format($data->total_expense) }}
                                                 <span
                                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
                                                     {{ $data->expense_count }}

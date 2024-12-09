@@ -178,14 +178,25 @@
                                         <div class="box2 p-4 d-flex align-items-stretch">
                                             <div class="flx-3">
                                                 <div class="name">
-                                                    <div class="custom-floating">
+                                                    <div class="custom-floating" id="bloodhound">
                                                         <input type="text" name="name" id="customNameInput"
-                                                            class="form-control custom-form-control" autocomplete="off"
-                                                            placeholder=" ">
-                                                        <label for="customNameInput"
-                                                            class="custom-form-label">Name</label>
+                                                            class="form-control typeahead " autocomplete="off"
+                                                            placeholder="Name">
+                                                        {{-- <label for="customNameInput"
+                                                            class="custom-form-label">Name</label> --}}
                                                     </div>
                                                 </div>
+                                                {{-- @foreach ( $dynamicData as $data )
+                                                {{$data->name}}
+                                                @endforeach --}}
+                                                {{-- {{ $dynamicData }} --}}
+                                                {{-- <div class="col">
+                                                    <label class="form-label">Bloodhound</label>
+                                                    <div id="bloodhound">
+                                                        <input class="typeahead form-control" type="text"
+                                                            placeholder="States of USA">
+                                                    </div>
+                                                </div> --}}
                                                 <div class="payment-type">
                                                     <select name="payment_type" class="form-select form-select-lg">
                                                         <option selected disabled>Payment type</option>
@@ -234,53 +245,76 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">Today </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($todayIncome,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">Today </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($todayIncome,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($todayExp,2) }}</h4>
+                    </div>
 
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">Yesterday</p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($yesterdayIncome,2) }}
-                    </h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">Yesterday</p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($yesterdayIncome,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($yesterdayExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">Last 7 days </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($lastsevenday,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">Last 7 days </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($lastsevenday,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($lastsevendayExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">This Week </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($thisWeek,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">This Week </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($thisWeek,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($thisWeekExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-light d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">This Month </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($thismonth,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">This Month </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($thismonth,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($thismonthExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-secondary d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">Last Month </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($lastmonth,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">Last Month </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($lastmonth,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($lastmonthExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">This Year </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($thisyear,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">This Year </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($thisyear,2) }}</h4>
+                        <h4 class="incomeAmount text-danger tx-14">{{ number_format($thisyearExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                    <p class="tx-14">Last Year </p>
-                    <h4 class="incomeAmount alert-heading tx-14">{{ number_format($lastYear,2) }}</h4>
+                <div class="alert alert-info p-2 d-flex align-items-center justify-content-between" role="alert">
+                    <p class="text-secondary tx-14">Last Year </p>
+                    <div>
+                        <h4 class="incomeAmount text-success tx-14">{{ number_format($lastYear,2) }}</h4>
+                        <h4 class="incomeAmount alert-heading tx-14">{{ number_format($lastYearExp,2) }}</h4>
+                    </div>
                 </div>
             </div>
 
@@ -705,6 +739,66 @@ document.addEventListener('DOMContentLoaded', function() {
             feather.replace();
         };
 
+</script>
+
+
+<script>
+    $(function() {
+      'use strict';
+    
+      // Define a substring matcher for typeahead
+      var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+          var matches = [];
+          var substrRegex = new RegExp(q, 'i'); // Case-insensitive regex
+    
+          // Add matching strings to the matches array
+          for (var i = 0; i < strs.length; i++) {
+            if (substrRegex.test(strs[i])) {
+              matches.push(strs[i]);
+            }
+          }
+    
+          cb(matches);
+        };
+      };
+    
+      // Dynamically populate the states array using Blade
+      var states = [
+          @foreach($dynamicData as $data)
+              "{{ $data->name }}",
+          @endforeach
+      ];
+    
+      console.log(states); // Output the array to the console for verification
+    
+      // Initialize typeahead with substring matcher
+      $('#the-basics .typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+      }, {
+        name: 'states',
+        source: substringMatcher(states)
+      });
+    
+      // Initialize Bloodhound suggestion engine
+      var bloodhoundStates = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: states // Use the dynamically loaded states array
+      });
+    
+      // Initialize typeahead with Bloodhound
+      $('#bloodhound .typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+      }, {
+        name: 'states',
+        source: bloodhoundStates
+      });
+    });
 </script>
 
 @endsection
