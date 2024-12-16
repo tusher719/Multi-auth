@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Calculate_Amounts;
 use App\Models\Main_Amounts;
 use App\Models\RecordCategory;
+use App\Models\RecordSubCategory;
 use App\Models\Wallet;
 use App\Models\WalletHistory;
 use Carbon\Carbon;
@@ -421,47 +422,61 @@ class WalletController extends Controller
     // Wallet Record
     public function AddMore()
     {
-        $records = RecordCategory::with('stocks')->get();
-        return view('backend.wallet.addMore', compact('records'));
+        $records = RecordCategory::with('stocks')->latest()->get();
+        $categoryCount = RecordCategory::count(); // Count record_category rows
+        $subCategoryCount = RecordSubCategory::count(); // Count record_sub_category rows
+
+        return view('backend.wallet.addMore', compact('records', 'categoryCount', 'subCategoryCount'));
     }
 
     // Record AddMore Storage
     public function AddMoreStore(Request $request)
     {
-        // dd($request->all());
-        // $rules = ['name' => 'required', 'stocks.*' => 'required'];
-        // foreach ($request->stocks as $key => $value) {
-        //     $rules["stocks.{$key}.quantity"] = 'required';
-        //     $rules["stocks.{$key}.price"] = 'required';
-        // }
-        // $request->validate($rules);
-        // $product = RecordCategory::create(['name' => $request->name]);
-        // foreach ($request->stocks as $key => $value) {
-        //     $product->stocks()->create($value);
-        // }
+        $rules = [
+            'name' => 'required',
+            'amount' => 'required|numeric', // If amount validation is needed
+            'description' => 'nullable|string|max:255', // Add rule for description
+            'stocks' => 'required|array',
+        ];
 
-
-        $rules = ['name' => 'required', 'stocks' => 'required|array',];
-
-        $messages = ['name.required' => 'The product name is required.', 'stocks.required' => 'At least one stock entry is required.',];
+        $messages = [
+            'name.required' => 'The product name is required.',
+            'amount.required' => 'The amount is required.',
+            'amount.numeric' => 'The amount must be a valid number.',
+            'description.string' => 'The description must be a valid string.',
+            'description.max' => 'The description must not exceed 255 characters.',
+            'stocks.required' => 'At least one stock entry is required.',
+        ];
 
         foreach ($request->stocks as $key => $value) {
-            $rules["stocks.$key.quantity"] = 'required';
+            $rules["stocks.$key.name"] = 'required';
             $rules["stocks.$key.price"] = 'required|numeric';
+            $rules["stocks.$key.description"] = 'nullable|string|max:255';
 
             // Customizing messages for each stock item
-            $messages["stocks.$key.quantity.required"] = "The quantity is required for Stock #" . ($key + 1) . ".";
-            $messages["stocks.$key.quantity.numeric"] = "The quantity must be a number for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.name.required"] = "The name is required for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.name.required"] = "The name must be a number for Stock #" . ($key + 1) . ".";
             $messages["stocks.$key.price.required"] = "The price is required for Stock #" . ($key + 1) . ".";
             $messages["stocks.$key.price.numeric"] = "The price must be a number for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.description.string"] = "The description must be a valid string for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.description.max"] = "The description must not exceed 255 characters for Stock #" . ($key + 1) . ".";
         }
 
         $request->validate($rules, $messages);
 
         // Proceed with saving the data
-        $product = RecordCategory::create(['name' => $request->name]);
+        $product = RecordCategory::create([
+            'name' => $request->name,
+            'amount' => $request->amount,
+            'description' => $request->description, // Save description
+        ]);
         foreach ($request->stocks as $stock) {
-            $product->stocks()->create($stock);
+            // $product->stocks()->create($stock);
+            $product->stocks()->create([
+                'name' => $stock['name'],
+                'price' => $stock['price'],
+                'description' => $stock['description'] ?? null, // Handle optional description
+            ]);
         }
 
         // Notifications
@@ -470,5 +485,19 @@ class WalletController extends Controller
             'alert-type'    => 'success',
         );
         return redirect()->back()->with($notification);
+    }
+
+    // Delete the record and its related stocks
+    public function delete($id)
+    {
+        $record = RecordCategory::findOrFail($id);
+
+        // Deleting all related stocks first
+        $record->stocks()->delete();
+
+        // Now deleting the record
+        $record->delete();
+
+        return redirect()->route('add.more')->with('success', 'Record and its stocks deleted successfully.');
     }
 }

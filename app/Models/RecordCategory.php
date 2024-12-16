@@ -12,12 +12,11 @@ class RecordCategory extends Model
 
     protected $table = 'record_category';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'amount', 'description'];
 
 
     public function stocks(): HasMany
     {
         return $this->hasMany(RecordSubCategory::class, 'category_id');
     }
-    
 }

@@ -11,5 +11,5 @@ class RecordSubCategory extends Model
 
     protected $table = 'record_sub_category';
 
-    protected $fillable = ['category_id', 'quantity', 'price'];
+    protected $fillable = ['category_id', 'name', 'price', 'description'];
 }

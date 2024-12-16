@@ -164,6 +164,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(WalletController::class)->group(function () {
         Route::get('/wallet/record/add-more', 'AddMore')->name('add.more');
         Route::post('/wallet/record/add-store', 'AddMoreStore')->name('add-more.store');
+        Route::get('/wallet/record/details/{id}', 'showDetails')->name('record.details');
+        Route::get('/wallet/record/details/{id}', 'ViewTodos')->name('view.wallet');
+        Route::get('/wallet/addrecord/delete/{id}', 'delete')->name('delete.addmore');
     });
 
     // Tag All Route
