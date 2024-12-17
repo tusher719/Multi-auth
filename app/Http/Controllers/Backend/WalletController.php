@@ -436,7 +436,7 @@ class WalletController extends Controller
             'name' => 'required',
             'amount' => 'required|numeric', // If amount validation is needed
             'description' => 'nullable|string|max:255', // Add rule for description
-            'stocks' => 'required|array',
+            'stocks' => 'required|array|min:1', // Ensure at least one stock is added
         ];
 
         $messages = [
@@ -486,6 +486,76 @@ class WalletController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    // Edit Record
+    public function AddMoreEdit($id)
+    {
+        // Fetch the specific RecordCategory with its associated stocks
+        $record = RecordCategory::with('stocks')->findOrFail($id);
+
+        return view('backend.wallet.editMore', compact('record'));
+    }
+
+
+    // Update Record
+    public function AddMoreUpdate(Request $request, $id)
+    {
+        // Validation rules
+        $rules = [
+            'name' => 'required|string|max:255',
+            'amount' => 'required|numeric',
+            'description' => 'nullable|string|max:255',
+            'stocks' => 'required|array|min:1',
+        ];
+
+        foreach ($request->stocks as $key => $value) {
+            $rules["stocks.$key.name"] = 'required|string|max:255';
+            $rules["stocks.$key.price"] = 'required|numeric';
+            $rules["stocks.$key.description"] = 'nullable|string|max:255';
+        }
+
+        // Custom validation messages
+        $messages = [
+            'name.required' => 'The product name is required.',
+            'amount.required' => 'The amount is required.',
+            'stocks.required' => 'At least one stock entry is required.',
+        ];
+        foreach ($request->stocks as $key => $value) {
+            $messages["stocks.$key.name.required"] = "The name is required for Stock #" . ($key + 1) . ".";
+            $messages["stocks.$key.price.required"] = "The price is required for Stock #" . ($key + 1) . ".";
+        }
+
+        // Validate request
+        $request->validate($rules, $messages);
+
+        // Update RecordCategory
+        $record = RecordCategory::findOrFail($id);
+        $record->update([
+            'name' => $request->name,
+            'amount' => $request->amount,
+            'description' => $request->description,
+        ]);
+
+        // Sync Stocks
+        $record->stocks()->delete(); // Delete old stocks to refresh data
+
+        foreach ($request->stocks as $stock) {
+            $record->stocks()->create([
+                'name' => $stock['name'],
+                'price' => $stock['price'],
+                'description' => $stock['description'] ?? null,
+            ]);
+        }
+
+        // Return success message
+        return redirect()->route('add.more')->with([
+            'message' => 'Record updated successfully!',
+            'alert-type' => 'success',
+        ]);
+    }
+
+
+
 
     // Delete the record and its related stocks
     public function delete($id)

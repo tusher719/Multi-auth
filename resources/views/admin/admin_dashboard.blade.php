@@ -13,8 +13,7 @@ Contact: tusher10823@gmail.com
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
     <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <title>Admin Panel - Real Estate</title>
 
@@ -142,25 +141,26 @@ Contact: tusher10823@gmail.com
 
     <script>
         @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type','info') }}"
-    switch(type){
-        case 'info':
-        toastr.info(" {{ Session::get('message') }} ");
-        break;
+        var type = "{{ Session::get('alert-type','info') }}"
+        switch (type) {
+            case 'info':
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
 
-        case 'success':
-        toastr.success(" {{ Session::get('message') }} ");
-        break;
+            case 'success':
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
 
-        case 'warning':
-        toastr.warning(" {{ Session::get('message') }} ");
-        break;
+            case 'warning':
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
 
-        case 'error':
-        toastr.error(" {{ Session::get('message') }} ");
-        break;
-    }
-    @endif
+            case 'error':
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
+        }
+        @endif
+
     </script>
 
     <!-- Add Sweetalert -->
