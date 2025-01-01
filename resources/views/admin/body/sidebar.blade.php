@@ -21,8 +21,7 @@
             </li>
             <li class="nav-item nav-category">web apps</li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
-                    aria-controls="emails">
+                <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
                     <i class="link-icon" data-feather="mail"></i>
                     <span class="link-title">Email</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -51,8 +50,7 @@
             </li>
             <li class="nav-item nav-category">Components</li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false"
-                    aria-controls="uiComponents">
+                <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
                     <i class="link-icon" data-feather="feather"></i>
                     <span class="link-title">Todos</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -71,8 +69,7 @@
 
             @if(Auth::user()->can('type.menu'))
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false"
-                    aria-controls="advancedUI">
+                <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
                     <i class="link-icon" data-feather="anchor"></i>
                     <span class="link-title">Advanced UI</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -98,8 +95,7 @@
 
             <li class="nav-item nav-category">Role & Permission</li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#RolePermission" role="button" aria-expanded="false"
-                    aria-controls="RolePermission">
+                <a class="nav-link" data-bs-toggle="collapse" href="#RolePermission" role="button" aria-expanded="false" aria-controls="RolePermission">
                     <i class="link-icon" data-feather="anchor"></i>
                     <span class="link-title">Role & Permission</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -123,8 +119,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#admin" role="button" aria-expanded="false"
-                    aria-controls="RolePermission">
+                <a class="nav-link" data-bs-toggle="collapse" href="#admin" role="button" aria-expanded="false" aria-controls="RolePermission">
                     <i class="link-icon" data-feather="anchor"></i>
                     <span class="link-title">Manage Admin User</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -148,8 +143,7 @@
             <li class="nav-item nav-category">Student Manage</li>
 
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false"
-                    aria-controls="RolePermission">
+                <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false" aria-controls="RolePermission">
                     <i class="link-icon" data-feather="anchor"></i>
                     <span class="link-title">Creative Park</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -180,14 +174,18 @@
             <li class="nav-item nav-category">Privet</li>
 
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false"
-                    aria-controls="RolePermission">
+                <a class="nav-link" data-bs-toggle="collapse" href="#cp" role="button" aria-expanded="false" aria-controls="RolePermission">
                     <i class="link-icon" data-feather="anchor"></i>
                     <span class="link-title">Wallet</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse" id="cp">
                     <ul class="nav sub-menu">
+                        @if(Auth::user()->can('admin.all'))
+                        <li class="nav-item">
+                            <a href="{{ route('wallet.main') }}" class="nav-link">Wallet Main</a>
+                        </li>
+                        @endif
                         @if(Auth::user()->can('admin.all'))
                         <li class="nav-item">
                             <a href="{{ route('wallet') }}" class="nav-link">Accounts</a>

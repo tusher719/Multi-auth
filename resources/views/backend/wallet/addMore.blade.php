@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header">Create Category</div>
                     <div class="card-body">
-                        <div class="form-control mt-2">
+                        <div class="mt-2">
                             <form action="{{ route('add-more.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
 
@@ -40,7 +40,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label>Name:</label>
+                                                    <label for="name" class="form-label">Name:</label>
                                                     <input type="text" class="form-control" name="name" placeholder="Enter name" value="{{ request()->old('name') }}" />
 
                                                     @error('name')
@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label>Amount:</label>
+                                                    <label for="amount" class="form-label">Amount:</label>
                                                     <input type="number" class="form-control" name="amount" placeholder="Enter amount" value="{{ request()->old('amount') }}" />
 
                                                     @error('amount')
@@ -61,8 +61,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group mb-3">
-                                                    <label>Description:</label>
-                                                    <textarea class="form-control" name="description" placeholder="Enter description">{{ request()->old('description') }}</textarea>
+                                                    <label for="description" class="form-label">Description:</label>
+                                                    <textarea class="form-control" name="description" rows="4" placeholder="Enter description">{{ request()->old('description') }}</textarea>
                                                     @error('description')
                                                     <p class="text-danger">{{ $message }}</p>
                                                     @enderror
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <table class="table table-bordered mt-2 table-add-more">
+                                        <table class="table table-bordered table-hover mt-2 table-add-more">
                                             <thead>
                                                 <tr>
                                                     <th colspan="3">
@@ -82,6 +82,12 @@
                                                             <i class="fa fa-plus"></i>Add More
                                                         </button>
                                                     </th>
+                                                </tr>
+                                                <tr class="table-secondary">
+                                                    <th>Name</th>
+                                                    <th>Price</th>
+                                                    <th>Description</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -152,13 +158,11 @@
             </div>
 
 
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card mt-5">
                     <div class="card-header">Category List</div>
                     <div class="card-body">
                         @include('backend.wallet.addMore.table_view')
-
-
                     </div>
                 </div>
             </div>

@@ -2,30 +2,28 @@
     <thead class="table-dark">
         <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>Name (Stocks)</th>
             <th>Amount</th>
-            {{-- <th>Description</th> --}}
             <th>Stock Details</th>
             <th>Total Price</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
     </thead>
-    <tbody class="table-group-divider">
-        @foreach ($records as $item)
+    <tbody>
+        @foreach ($records as $key => $item)
         <tr>
-            <td>{{ $item->id }}</td>
-            <td>{{ $item->name }} - ({{ $item->stocks->count() }})</td>
-            <td>
-                <i data-feather="dollar-sign" class="icon-sm" width="24" height="24"></i>
-                {{ number_format($item->amount,0) }}
-            </td>
-            {{-- <td class="text-muted"><i>{{ $item->description }}</i></td> --}}
+            <!-- Category Basic Details -->
+            <td>{{ $key+1 }}</td>
+            <td>{{ $item->name }} ({{ $item->stocks->count() }})</td>
+            <td>${{ number_format($item->amount, 2) }}</td>
+
+            <!-- Stock Details (Collapsible Table for Clarity) -->
             <td>
                 <table class="table table-sm table-hover">
-                    <thead class="table-dark">
+                    <thead class="table-light">
                         <tr>
                             <th>Name</th>
-                            <th>Amount</th>
+                            <th>Price</th>
                             <th>Paid</th>
                             <th>Due</th>
                         </tr>
@@ -33,243 +31,128 @@
                     <tbody>
                         @foreach ($item->stocks as $stock)
                         <tr>
-                            <td> {{ $stock->name }} </td>
-                            <td>
-                                {{ number_format($stock->price,1) }}
-                                @if ($item->stocks->count() > 1)
-                                - {{ number_format($item->amount / $item->stocks->count(),1) }}
-                                @endif
+                            <td>{{ $stock->name }}</td>
+                            <td>${{ number_format($stock->price, 2) }}</td>
+                            <td class="text-success">
+                                {{ $stock->price >= ($item->amount / $item->stocks->count()) ? number_format($stock->price - $item->amount / $item->stocks->count(), 2) : '---' }}
                             </td>
-                            <td>
-                                @if($stock->price - $item->amount / $item->stocks->count() <= 0) --- @else <p class="text-success">
-                                    {{ number_format( $stock->price - $item->amount / $item->stocks->count(),1) }}
-                                    </p>
-                                    @endif
+                            <td class="text-danger">
+                                {{ $stock->price < ($item->amount / $item->stocks->count()) ? number_format($item->amount / $item->stocks->count() - $stock->price, 2) : '---' }}
                             </td>
-                            <td>
-                                @if($stock->price - $item->amount / $item->stocks->count() < 0) <p class="text-danger">
-                                    {{ number_format( $stock->price - $item->amount / $item->stocks->count(),1) }}
-                                    </p>
-                                    @else
-                                    ---
-                                    @endif
-                            </td>
-
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </td>
+
+            <!-- Total Price Section -->
             <td>
-                {{-- @foreach ($item->stocks as $stock)
-                {{ $stock->price }} {{ !$loop->last ? ' + ' : '' }}
-                @endforeach --}}
+                <p class="text-success">Paid: ${{ number_format($item->stocks->sum('price'), 2) }}</p>
+                @if($item->stocks->sum('price') >= $item->amount)
+                <p class="text-success">Extra: ${{ number_format($item->stocks->sum('price') - $item->amount, 2) }}</p>
 
-                <p class="text-success mt-2">Paid = {{ $item->stocks->sum('price') }}
-                    <br> (Names) =
-                    @if($item->stocks->where('price', '>', 0)->isNotEmpty())
-                    @foreach ($item->stocks->where('price', '>', 0) as $stock)
-                    {{ $stock->name}}{{!$loop->last ? ',' : '' }}
-                    @endforeach
-                    @endif
-                </p>
-                <p class="text-danger">Due = {{ $item->amount - $item->stocks->sum('price') }}
-                    <br> (Names) =
-                    @if($item->stocks->where('price', 0)->isNotEmpty())
-                    @foreach ($item->stocks->where('price', 0) as $stock)
-                    {{ $stock->name }} {{ !$loop->last ? ' , ' : '' }}
-                    @endforeach
-                    @endif
-                </p>
-
-                {{-- <p class="text-success mt-5">Credit = {{ $item->stocks->sum('price') }}</p>
-                <p class="text-danger">Debit = {{ $item->amount - $item->stocks->sum('price') }}
-                </p>
-
-                <!-- Stocks with zero price -->
-                @if($item->stocks->where('price', 0)->isNotEmpty())
-                <p class="text-warning">Stocks with zero price:</p>
-                <ul>
-                    @foreach ($item->stocks->where('price', 0) as $stock)
-                    <li>{{ $stock->name }}</li>
-                    @endforeach
-                </ul>
-                @endif
-
-                <!-- Stocks with price greater than zero -->
-                @if($item->stocks->where('price', '>', 0)->isNotEmpty())
-                <p class="text-info">Stocks with price greater than 0:</p>
-                <ul>
-                    @foreach ($item->stocks->where('price', '>', 0) as $stock)
-                    <li>{{ $stock->name }}: {{ $stock->price }}</li>
-                    @endforeach
-                </ul>
                 @else
-                <p class="text-warning">No stocks with price greater than 0.</p>
-                @endif --}}
+                <p class="text-danger">Due: ${{ number_format($item->amount - $item->stocks->sum('price'), 2) }}</p>
 
-                @if ($item->stocks->count() > 1)
-                {{-- max = {{ number_format($item->stocks->max('price'),2) }} <br> --}}
-                <p class="text-info mt-3">
-                    Avg = {{ number_format($item->amount / $item->stocks->count(),2) }}
-                </p>
-                {{-- min = {{ number_format($item->stocks->min('price'),2) }} --}}
                 @endif
+                {{-- <p class="text-danger">Due: ${{ number_format($item->amount - $item->stocks->sum('price'), 2) }}</p> --}}
             </td>
-            <td class="d-flex justify-content-around">
-                {{-- <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('view.wallet',$item->id) }}">
-                <i data-feather="eye" class="icon-sm" width="24" height="24"></i>
-                <span class="mx-3">View</span>
-                </a> --}}
 
+            <!-- Actions -->
+            <td class="d-flex gap-2">
 
-                <div>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $item->id }}">
-                        <i data-feather="eye" class="icon-sm" width="24" height="24"></i>
-                        <span class="mx-3">View</span>
-                    </button>
+                <div class="option">
+                    {{-- <i data-feather="more-vertical"></i>--}}
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
-                                        title
-                                    </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="dropdown">
+                        <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" class="" aria-haspopup="true" aria-expanded="false">
+                            <i data-feather="settings"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!-- View Button -->
+                            @if(Auth::user()->can('admin.edit'))
+                            <button class="dropdown-item d-flex align-items-center" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#viewModal{{ $item->id }}">
+                                {{-- <i data-feather="eye"></i> View --}}
+                                <i data-feather="eye" class="icon-sm" width="24" height="24"></i>
+                                <span class="mx-3">View</span>
+                            </button>
+                            @endif
+                            <!-- Edit Button -->
+                            @if(Auth::user()->can('admin.edit'))
+                            <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" href="{{ route('add-more.edit', $item->id) }}">
+                                <i data-feather="edit-2" class="icon-sm" width="24" height="24"></i>
+                                <span class="mx-3">Edit</span>
+                            </a>
+                            @endif
+                            <!-- Delete Button -->
+                            @if(Auth::user()->can('admin.delete'))
+                            <a class="dropdown-item d-flex align-items-center" style="font-size: 14px;" id="delete" href="{{ route('delete.addmore', $item->id) }}">
+                                <i data-feather="trash-2" class="icon-sm" width="24" height="24"></i>
+                                <span class="mx-3">Delete</span>
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Template -->
+                <div class="modal fade" id="viewModal{{ $item->id }}" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="viewModalLabel">{{ $item->name }} (ID: {{ $item->id }})</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <h6 class="text-muted">{{ $item->description ?? 'No description available.' }}</h6>
+
+                                <div class="d-flex justify-content-between my-3">
+                                    <h4 class="text-warning">Bill Amount: ${{ number_format($item->amount, 2) }}</h4>
+                                    <h4 class="text-danger">Due: ${{ number_format($item->amount - $item->stocks->sum('price'), 2) }}</h4>
                                 </div>
-                                <div class="modal-body">
 
+                                <!-- Stock Details -->
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Paid</th>
+                                            <th>Due</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($item->stocks as $stock)
+                                        <tr>
+                                            <td>{{ $stock->name }}</td>
+                                            <td>${{ number_format($stock->price, 2) }}</td>
+                                            <td class="text-success">
+                                                {{ $stock->price >= ($item->amount / $item->stocks->count()) ? number_format($stock->price - $item->amount / $item->stocks->count(), 2) : '---' }}
+                                            </td>
+                                            <td class="text-danger">
+                                                {{ $stock->price < ($item->amount / $item->stocks->count()) ? number_format($item->amount / $item->stocks->count() - $stock->price, 2) : '---' }}
+                                            </td>
+                                            <td>{{ $stock->description ?? 'No description available.' }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                    <h2>{{ $item->name }} ({{ $item->id }} )</h2>
-                                    <h6 class="mt-1 text-secondary">{{ $item->description }}
-                                    </h6>
-                                    <div class="d-flex justify-content-between">
-                                        <h4 class="mt-2 text-warning">
-                                            Bill Amount: $ {{ number_format($item->amount,2)}}
-                                        </h4>
-                                        <h4 class="mt-2 text-danger">
-                                            Due Amount: $ {{ number_format($item->amount -
-                                            $item->stocks->sum('price'),2) }}
-                                        </h4>
-                                    </div>
-
-                                    <table class="table table-bordered mt-3">
-                                        <thead>
-                                            <tr>
-                                                <th>Stock Details</th>
-                                                <th>Total Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <table class="table table-sm">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <th>Amount</th>
-                                                                <th>Paid</th>
-                                                                <th>Due</th>
-                                                                <th>Description</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($item->stocks as $stock)
-                                                            <tr>
-                                                                <td> {{ $stock->name }} </td>
-                                                                <td>
-                                                                    $ {{ number_format($stock->price,1) }}
-                                                                    @if ($item->stocks->count() > 1)
-                                                                    - {{ number_format($item->amount / $item->stocks->count(),1) }}
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    @if($stock->price - $item->amount / $item->stocks->count() <= 0) --- @else <p class="text-success">
-                                                                        {{ number_format( $stock->price - $item->amount / $item->stocks->count(),1) }}
-                                                                        </p>
-                                                                        @endif
-                                                                </td>
-                                                                <td>
-                                                                    @if($stock->price -
-                                                                    $item->amount /
-                                                                    $item->stocks->count() < 0) <p class="text-danger">
-                                                                        {{ number_format( $stock->price - $item->amount / $item->stocks->count(),1) }}
-                                                                        </p>
-                                                                        @else
-                                                                        ---
-                                                                        @endif
-                                                                </td>
-                                                                <td>
-                                                                    <i class="text-muted">
-                                                                        @if($stock->description == !null)
-                                                                        {{ $stock->description }}
-                                                                        @else
-                                                                        --
-                                                                        @endif
-                                                                    </i>
-                                                                </td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                                <td>
-                                                    <p class="text-success mt-2">Paid = $ {{ $item->stocks->sum('price') }}
-                                                        <br> (Names) =
-                                                        @if($item->stocks->where('price', '>', 0)->isNotEmpty())
-                                                        @foreach ($item->stocks->where('price', '>', 0) as $stock)
-                                                        {{ $stock->name}}{{!$loop->last ? ',' : '' }}
-                                                        @endforeach
-                                                        @endif
-                                                    </p>
-                                                    <br>
-                                                    <p class="text-danger">Due = $ {{ $item->amount - $item->stocks->sum('price') }}
-                                                        <br> (Names) =
-                                                        @if($item->stocks->where('price', 0)->isNotEmpty())
-                                                        @foreach ($item->stocks->where('price', 0) as $stock)
-                                                        {{ $stock->name }} {{ !$loop->last ? ' , ' : '' }}
-                                                        @endforeach
-                                                        @endif
-                                                    </p>
-
-                                                    @if ($item->stocks->count() > 1)
-                                                    <p class="text-info mt-3">Avg = {{ number_format($item->amount / $item->stocks->count(),2) }}</p>
-
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save
-                                        changes</button>
-                                </div>
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a class="dropdown-item d-flex align-items-center bg-success" style="font-size: 14px; width: 100px; margin-top: 10px;" href="{{ route('add-more.edit',$item->id) }}">
-                    <i data-feather="edit-2" class="icon-sm text-white" width="24" height="24"></i>
-                    <span class="mx-3">Edit</span>
-                </a>
-
-
-
-
-                <a class="dropdown-item d-flex align-items-center" style="font-size: 14px; background-color: rgb(202, 12, 12); width: 100px; margin-top: 10px;" href="{{ route('delete.addmore',$item->id) }}" id="delete">
-                    <i data-feather="trash-2" class="icon-sm text-white" width="24" height="24"></i>
-                    <span class="mx-3">Delete</span>
-                </a>
             </td>
         </tr>
-        @endforeach
 
+        @endforeach
     </tbody>
 </table>

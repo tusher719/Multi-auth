@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OnDoamjyGR3DOBxU',
+            '_route' => 'generated::cgIgnZCZJIpmNVEM',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OcFBxjbqxcJh5193',
+            '_route' => 'generated::r6QKx5r5zte4ChL1',
           ),
           1 => NULL,
           2 => 
@@ -231,7 +231,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::dIl6Mw1gBV52mcOz',
+            '_route' => 'generated::sMK0XETERDpW1Dxm',
           ),
           1 => NULL,
           2 => 
@@ -267,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ZXDthRGhrRUStvQn',
+            '_route' => 'generated::zusYF6NiP0zbbLVp',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +397,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::DBAksOzbxYA0s6sk',
+            '_route' => 'generated::ejzEFsbgOMzAJWLv',
           ),
           1 => NULL,
           2 => 
@@ -1192,6 +1192,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/wallet/main' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wallet.main',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/wallet/store' => 
       array (
         0 => 
@@ -1835,7 +1855,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::J60x8Mxko9VXZwI0',
+            '_route' => 'generated::AdOjadyckWS7DFCp',
           ),
           1 => 
           array (
@@ -2331,7 +2351,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::OnDoamjyGR3DOBxU' => 
+    'generated::cgIgnZCZJIpmNVEM' => 
     array (
       'methods' => 
       array (
@@ -2354,7 +2374,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::OnDoamjyGR3DOBxU',
+        'as' => 'generated::cgIgnZCZJIpmNVEM',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2370,7 +2390,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::OcFBxjbqxcJh5193' => 
+    'generated::r6QKx5r5zte4ChL1' => 
     array (
       'methods' => 
       array (
@@ -2392,7 +2412,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::OcFBxjbqxcJh5193',
+        'as' => 'generated::r6QKx5r5zte4ChL1',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2598,7 +2618,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::dIl6Mw1gBV52mcOz' => 
+    'generated::sMK0XETERDpW1Dxm' => 
     array (
       'methods' => 
       array (
@@ -2619,7 +2639,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dIl6Mw1gBV52mcOz',
+        'as' => 'generated::sMK0XETERDpW1Dxm',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2673,7 +2693,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ZXDthRGhrRUStvQn' => 
+    'generated::zusYF6NiP0zbbLVp' => 
     array (
       'methods' => 
       array (
@@ -2694,7 +2714,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ZXDthRGhrRUStvQn',
+        'as' => 'generated::zusYF6NiP0zbbLVp',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3014,7 +3034,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::DBAksOzbxYA0s6sk' => 
+    'generated::ejzEFsbgOMzAJWLv' => 
     array (
       'methods' => 
       array (
@@ -3035,7 +3055,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::DBAksOzbxYA0s6sk',
+        'as' => 'generated::ejzEFsbgOMzAJWLv',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5066,7 +5086,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::J60x8Mxko9VXZwI0' => 
+    'generated::AdOjadyckWS7DFCp' => 
     array (
       'methods' => 
       array (
@@ -5089,7 +5109,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::J60x8Mxko9VXZwI0',
+        'as' => 'generated::AdOjadyckWS7DFCp',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5437,6 +5457,45 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'wallet',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wallet.main' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'wallet/main',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'roles:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Backend\\WalletController@WalletMain',
+        'controller' => 'App\\Http\\Controllers\\Backend\\WalletController@WalletMain',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wallet.main',
       ),
       'fallback' => false,
       'defaults' => 

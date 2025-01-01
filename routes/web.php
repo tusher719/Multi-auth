@@ -169,7 +169,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/wallet/addrecord/delete/{id}', 'delete')->name('delete.addmore');
         Route::get('/add-more/{id}/edit', 'AddMoreEdit')->name('add-more.edit');
         Route::put('/add-more/{id}', 'AddMoreUpdate')->name('add-more.update');
-
     });
 
     // Tag All Route
