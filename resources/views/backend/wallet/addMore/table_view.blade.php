@@ -10,10 +10,17 @@
         </tr>
     </thead>
     <tbody>
+<<<<<<< Updated upstream
         @foreach ($records as $key => $item)
         <tr>
             <!-- Category Basic Details -->
             <td>{{ $key+1 }}</td>
+=======
+        @foreach ($records as $item)
+        <tr>
+            <!-- Category Basic Details -->
+            <td>{{ $item->id }}</td>
+>>>>>>> Stashed changes
             <td>{{ $item->name }} ({{ $item->stocks->count() }})</td>
             <td>${{ number_format($item->amount, 2) }}</td>
 
@@ -48,6 +55,7 @@
             <!-- Total Price Section -->
             <td>
                 <p class="text-success">Paid: ${{ number_format($item->stocks->sum('price'), 2) }}</p>
+<<<<<<< Updated upstream
                 @if($item->stocks->sum('price') >= $item->amount)
                 <p class="text-success">Extra: ${{ number_format($item->stocks->sum('price') - $item->amount, 2) }}</p>
 
@@ -56,10 +64,14 @@
 
                 @endif
                 {{-- <p class="text-danger">Due: ${{ number_format($item->amount - $item->stocks->sum('price'), 2) }}</p> --}}
+=======
+                <p class="text-danger">Due: ${{ number_format($item->amount - $item->stocks->sum('price'), 2) }}</p>
+>>>>>>> Stashed changes
             </td>
 
             <!-- Actions -->
             <td class="d-flex gap-2">
+<<<<<<< Updated upstream
 
                 <div class="option">
                     {{-- <i data-feather="more-vertical"></i>--}}
@@ -109,6 +121,26 @@
                             <div class="modal-body">
                                 <h6 class="text-muted">{{ $item->description ?? 'No description available.' }}</h6>
 
+=======
+                <!-- View Button -->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewModal{{ $item->id }}">
+                    <i data-feather="eye"></i> View
+                </button>
+                <!-- Modal Template -->
+                <div class="modal fade" id="viewModal{{ $item->id }}" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="viewModalLabel">{{ $item->name }} (ID: {{ $item->id }})</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <h6 class="text-muted">{{ $item->description ?? 'No description available.' }}</h6>
+
+>>>>>>> Stashed changes
                                 <div class="d-flex justify-content-between my-3">
                                     <h4 class="text-warning">Bill Amount: ${{ number_format($item->amount, 2) }}</h4>
                                     <h4 class="text-danger">Due: ${{ number_format($item->amount - $item->stocks->sum('price'), 2) }}</h4>
@@ -150,6 +182,20 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< Updated upstream
+=======
+
+
+                <!-- Edit Button -->
+                <a href="{{ route('add-more.edit', $item->id) }}" class="btn btn-success">
+                    <i data-feather="edit"></i> Edit
+                </a>
+
+                <!-- Delete Button -->
+                <a href="{{ route('delete.addmore', $item->id) }}" class="btn btn-danger" id="delete">
+                    <i data-feather="trash"></i> Delete
+                </a>
+>>>>>>> Stashed changes
             </td>
         </tr>
 
